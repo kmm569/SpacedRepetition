@@ -193,7 +193,7 @@ function calcRep() {
                 .map((v) => v[1]);
             var monthYr = k.split("-");
             todays = todays.join(", ");
-            todays = `${monthYr[0]}/${o}/${monthYr[1]}: ${todays}`;
+            todays = `${Number(monthYr[0])+1}/${o}/${monthYr[1]}: ${todays}`;
             studyDays.push(todays);
         }
 
