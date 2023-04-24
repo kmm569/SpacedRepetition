@@ -14,6 +14,7 @@ let currentRows = 0;
 
 subjects.addEventListener("change", () => {
     subInfo.style.display = subjects.value > 0 ? "block" : "none";
+    submit.style.display = subjects.value > 0 ? "inline-block" : "none";
     updateRows(subjects.value);
 });
 
@@ -246,10 +247,11 @@ function buildCalendar(monYr, stDays) {
         const studyTopic = mapped
             .map((v, i) => (v === k + 1 ? stDays[i][1] : null))
             .filter((h) => h !== null);
-        const studyTopicString = studyTopic.length > 0 ? `<span class="study"><sup title="Study Topics: ${studyTopic.join(", ")}">${studyTopic.length}</sup></span>` : "";
-
+        //const studyTopicString = studyTopic.length > 0 ? `<span class="study"><sup title="Study Topics: ${studyTopic.join(", ")}">${studyTopic.length}</sup></span>` : "";
+        const studyClass = studyTopic.length > 0 ? ` class='study'` : "";
         const activeClass = testDay !== false && testDay === k ? " class='active'" : "";
-        days.insertAdjacentHTML("beforeend", `<li>${studyTopicString}<span${activeClass}>${k + 1}</span></li>`);
+        const sup = studyTopic.length > 0 ? `<sup title="Study Topics: ${studyTopic.join(', ')}">${studyTopic.length}</sup>` : "";
+        days.insertAdjacentHTML("beforeend", `<li><span${studyClass}><span${activeClass}>${k+1}</span>${sup}</span></li>`);
     }
 
     const left = firstDay + totalDays;
