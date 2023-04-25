@@ -6,13 +6,26 @@
     <meta name="viewport" content="width=device-width" />
     <title>Spaced Repetition</title>
     <link href="./styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="./styles/themes/dark.css" rel="stylesheet" type="text/css" id="themeStyle" />
     <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
-    <link rel="icon" href="./styles/favicon.ico" type="image/x-icon"/>
 </head>
 
 <body>
+    <button id="themebutton">Theme</button>
+    <div id="blackout"></div>
+    <div id="themepopup">
+        <div id="themebox">
+            <div id="themecontent">
+                <a class="pageTitle">Themes</a><br>
+                <select id="themeInput">
+                    <option class="themeSelect" value="dark" selected>Dark</option>
+                    <option class="themeSelect" value="monotonedark">Monotone Dark</option>
+                </select>
+            </div>
+        </div>
+    </div>
     <div id="topBar">
-        <a id="pageTitle"> Spaced Repetition Calculator </a>
+        <a class="pageTitle"> Spaced Repetition Calculator </a>
         <br />
         <a class="item selected" id="sbj">Topic Scheduler</a>
         <a> | </a>
@@ -67,6 +80,7 @@
             <button class="cButton" id="goback">Start Over</button>
         </div>
     </div>
+
     <script src="./scripts/main.js"></script>
 
 </body>

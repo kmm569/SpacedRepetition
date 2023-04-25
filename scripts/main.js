@@ -9,8 +9,29 @@ const submit = document.getElementById("submit");
 const back = document.getElementById("goback");
 const mainForm = document.getElementById("sbj-form");
 const submitDiv = document.querySelector(".submittedTemp");
+const themeValue = document.getElementById('themeInput');
+const themes = document.getElementsByClassName('themeSelect');
+const stylesheet = document.getElementById('themeStyle');
+const blackout = document.getElementById('blackout');
+const themePopup = document.getElementById('themepopup');
+const themeButton = document.getElementById('themebutton');
 
 let currentRows = 0;
+
+themeValue.addEventListener('input', () => {
+    stylesheet.href = `./styles/themes/${themeValue.value}.css`;
+})
+
+blackout.addEventListener('click', () => {
+    themePopup.style.display = 'none';
+    blackout.style.display = "none";
+})
+
+themeButton.addEventListener('click', () => {
+    themePopup.style.display = 'flex';
+    blackout.style.display = 'block';
+
+})
 
 subjects.addEventListener("change", () => {
     subInfo.style.display = subjects.value > 0 ? "block" : "none";
@@ -22,6 +43,7 @@ submit.addEventListener("click", () => {
     if (calcRep()) {
         document.getElementById("errormsg").innerHTML = "";
         submitDiv.style.display = "block";
+        back.style.display = 'inline-block';
     }
 });
 
