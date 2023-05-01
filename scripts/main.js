@@ -282,11 +282,14 @@ function buildCalendar(monYr, stDays) {
     const testDay = testMonYr === monYr ? testDateValue.getDate() : false;
 
     const mapped = stDays.map((a) => new Date(a[0]).getDate());
+    const [numMon, numYr] = monYr.split("-");
+
+    if (!m[numMon]) {
+        return;
+    }
 
     const cal = document.createElement("div");
     cal.classList.add("single-cal");
-
-    const [numMon, numYr] = monYr.split("-");
 
     const month = document.createElement("div");
     month.classList.add("month");
