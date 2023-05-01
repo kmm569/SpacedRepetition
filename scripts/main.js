@@ -15,22 +15,38 @@ const stylesheet = document.getElementById('themeStyle');
 const blackout = document.getElementById('blackout');
 const themePopup = document.getElementById('themepopup');
 const themeButton = document.getElementById('themebutton');
+const yearButton = document.getElementById('carryYear');
 
 let currentRows = 0;
+let sameYear;
+let chosen = -1;
 
 themeValue.addEventListener('input', () => {
     stylesheet.href = `./styles/themes/${themeValue.value}.css`;
-})
+});
 
 blackout.addEventListener('click', () => {
     themePopup.style.display = 'none';
     blackout.style.display = "none";
-})
+});
 
 themeButton.addEventListener('click', () => {
     themePopup.style.display = 'flex';
     blackout.style.display = 'block';
 
+});
+
+yearButton.addEventListener('click', () => {
+    chosen *= -1;
+
+    if (chosen == 1) {
+        const rowCount = subTable.rows.length;
+        let tableDivs = subTable.getElementsByTagName(`div`);
+
+        for (var row = 1; row < rowCount; row++) {
+            tableDivs.item(row - 1).getElementsByTagName('input').item(2).value = new Date(`${testDate.value}T00:00`).getFullYear();
+        }
+    }
 })
 
 subjects.addEventListener("change", () => {
@@ -55,6 +71,8 @@ back.addEventListener("click", () => {
     updateRows(0);
 });
 
+
+
 const updateRows = (newRowCount) => {
     if (newRowCount > currentRows) {
         for (let i = 0; i < newRowCount - currentRows; i++) {
@@ -71,10 +89,17 @@ const updateRows = (newRowCount) => {
 function addRow() {
     const rowCount = subTable.rows.length;
     const row = subTable.insertRow(rowCount);
+    let yrVal;
+
+    if (chosen == 1 && testDate.value) {
+        yrVal = `value="${new Date(`${testDate.value}T00:00`).getFullYear()}"`
+    } else {
+        yrVal = '';
+    }
 
     const cells = [
         `<input class="inputBox subNames" type="string" id="sub${rowCount}name">`,
-        `<input class="inputBox subDates" type="date" id="sub${rowCount}learned">`,
+        `<div class="newDateBoxes"><input class="inputBox subMonthVal indvDate" min="0" max="12" type="number" id="sub${rowCount}Month"><input class="inputBox subDayVal indvDate" min="0" max="31" type="number" id="sub${rowCount}Day"><input class="inputBox subYearVal indvDate" min="0" max="2050" type="number" ${yrVal} id="sub${rowCount}Year"><input class="calPicker" type="date" id="sub${rowCount}Picker"></div>`,
         `<input class="subDiff" type="range" min="1" max="5" value="1" id="sub${rowCount}difficulty">`,
     ];
 
@@ -82,6 +107,13 @@ function addRow() {
         const newCell = row.insertCell(i);
         newCell.innerHTML = cellContent;
     });
+    document.getElementById(`sub${rowCount}Picker`).addEventListener('change', () => {
+        let dateVals = document.getElementById(`sub${rowCount}Picker`).value;
+        dateVals = dateVals.split('-');
+        document.getElementById(`sub${rowCount}Month`).value = dateVals[1];
+        document.getElementById(`sub${rowCount}Day`).value = dateVals[2];
+        document.getElementById(`sub${rowCount}Year`).value = dateVals[0];
+    })
 }
 
 function deleteRow() {
@@ -115,13 +147,29 @@ function calcRep() {
         "December",
     ];
     const topicNames = document.getElementsByClassName("subNames");
-    const topicDates = document.getElementsByClassName("subDates");
+    //const topicDates = document.getElementsByClassName("subDates");
+
+    let topicDates = [];
+    const topicMonths = document.getElementsByClassName('subMonthVal');
+    const topicDays = document.getElementsByClassName('subDayVal');
+    const topicYears = document.getElementsByClassName('subYearVal');
+
+
+    for (var k = 0; k < topicMonths.length;k++) {
+        if (topicYears[k].value == "" || topicMonths[k].value == '' || topicDays[k].value == '') {
+            document.getElementById("errormsg").innerHTML = "Please enter all topic dates before continuing!";
+            return false;
+        } else {
+            topicDates.push(`${topicYears[k].value}-${topicMonths[k].value}-${topicDays[k].value}`);
+        }
+    };
+
     const topicDiff = document.getElementsByClassName("subDiff");
 
     let monYr = [];
     let studyDates = [];
 
-    monYr.push(getMonthYear(new Date(testDate.value).valueOf() + 86400000));
+    monYr.push(getMonthYear(new Date(`${testDate.value}T00:00`).valueOf()));
 
     for (let n in topicNames) {
         if (!topicNames[n].value) {
@@ -131,8 +179,8 @@ function calcRep() {
 
     let i = 0;
     for (let d of topicDates) {
-        const dateValue = new Date(d.value).valueOf();
-        const testDateValue = new Date(testDate.value).valueOf();
+        const dateValue = new Date(d).valueOf();
+        const testDateValue = new Date(`${testDate.value}T00:00`).valueOf();
 
         if (dateValue > testDateValue) {
             document.getElementById("errormsg").innerHTML = "All topic dates must be before the test date!";
@@ -146,6 +194,7 @@ function calcRep() {
             const nextDate = new Date(dateValue + add * 86400000);
             if (nextDate < testDateValue) {
                 studyDates.push([nextDate, topicNames[i].value]);
+                monYr.push(getMonthYear(nextDate + 86400000));
             } else {
                 break;
             }
@@ -189,7 +238,7 @@ function calcRep() {
                 .map((v) => v[1]);
             const monthYr = k.split("-");
             const todaysStr = todays.join(", ");
-            const dateString = `${monthYr[0]}/${o}/${monthYr[1]}: ${todaysStr}`;
+            const dateString = `${Number(monthYr[0])+1}/${o}/${monthYr[1]}: ${todaysStr}`;
             studyDays.push(dateString);
         }
         const monthTitle = document.createElement("span");
@@ -206,7 +255,6 @@ function calcRep() {
         monthDiv.appendChild(datesContainer);
 
         studyAssignment.appendChild(monthDiv);
-
         buildCalendar(k, stDays);
     }
 
@@ -229,7 +277,7 @@ function buildCalendar(monYr, stDays) {
         "December",
     ];
 
-    const testDateValue = new Date(testDate.value);
+    const testDateValue = new Date(`${testDate.value}T00:00`);
     const testMonYr = `${testDateValue.getMonth()}-${testDateValue.getFullYear()}`;
     const testDay = testMonYr === monYr ? testDateValue.getDate() : false;
 
@@ -271,7 +319,7 @@ function buildCalendar(monYr, stDays) {
             .filter((h) => h !== null);
         //const studyTopicString = studyTopic.length > 0 ? `<span class="study"><sup title="Study Topics: ${studyTopic.join(", ")}">${studyTopic.length}</sup></span>` : "";
         const studyClass = studyTopic.length > 0 ? ` class='study'` : "";
-        const activeClass = testDay !== false && testDay === k ? " class='active'" : "";
+        const activeClass = testDay !== false && testDay === (k+1) ? " class='active'" : "";
         const sup = studyTopic.length > 0 ? `<sup title="Study Topics: ${studyTopic.join(', ')}">${studyTopic.length}</sup>` : "";
         days.insertAdjacentHTML("beforeend", `<li><span${studyClass}><span${activeClass}>${k+1}</span>${sup}</span></li>`);
     }

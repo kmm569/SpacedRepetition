@@ -16,10 +16,11 @@
     <div id="themepopup">
         <div id="themebox">
             <div id="themecontent">
-                <a class="pageTitle">Themes</a><br>
+                <a class="pageTitle" id="themeTitle">Themes</a><br>
                 <select id="themeInput">
                     <option class="themeSelect" value="dark" selected>Dark</option>
                     <option class="themeSelect" value="monotonedark">Monotone Dark</option>
+                    <option class="themeSelect" value="dutchess">Dutchess</option>
                 </select>
             </div>
         </div>
@@ -37,7 +38,9 @@
             <div class="section">
                 <label class="inputLabel" for="dot"> Date of test </label>
                 <br />
-                <input class="inputBox topBox" name="dot" type="date" id="dot" />
+                <input class="inputBox topBox" name="dot" type="date" id="dot" /><br><br>
+                <label class="inputLabel" id="yearCheck" for="carryYear">Do you want to use the same year for all topic entries?</label><br>
+                <input class="checkBox" name="carryYear" type="checkbox" id="carryYear" />
             </div>
             <br />
             <div class="section">

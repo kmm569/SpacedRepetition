@@ -31,7 +31,7 @@ hr {
     background-color: var(--font-color);
 }
 
-#pageTitle {
+.pageTitle {
     color: var(--title-color);
 }
 
@@ -47,6 +47,14 @@ hr {
 #themebutton:hover {
     background-color: var(--calculated-hover);
     color: var(--font-color);
+}
+
+.subDiff {
+    background-color: var(--link-color);
+}
+
+.subDiff::-webkit-slider-thumb {
+    background: var(--top-bar-color);
 }
 
 #topBar {

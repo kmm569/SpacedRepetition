@@ -1,18 +1,18 @@
 :root {
     /* caldendar values */
-    --cal-day-color: #EEF4F4;
+    --cal-weekday-color: #4CB1E1;
+    --cal-day-color: #FAFAFF;
     --cal-monthtxt-color: white;
     --cal-date-color: #777;
     /* page values */
-    --title-color: #E0DDCF;
-    --top-bar-color: #534B52;
-    --font-color: #d0cfcc;
-    --link-color: #F1F0EA;
-    --calculated-hover: #474448;
-    --page-background: #2D232E;
-    /*does not change*/
+    --title-color: #5caace;
+    --top-bar-color: #00527D;
+    --font-color: #2f2f97;
+    --link-color: #9ac6d9;
     --disabled-background: #5E5E5E;
-    --hover-text: #000;
+    --hover-text: #FAFAFF;
+    --calculated-hover: #bf9739;
+    --page-background: #FAFAFF;
     --error-msg: darkred;
 }
 
@@ -35,7 +35,7 @@ hr {
 
 #themebutton {
     background-color: var(--top-bar-color);
-    color: var(--title-color);
+    color: var(--page-background);
 }
 
 #themebutton:hover {
@@ -65,8 +65,8 @@ hr {
 }
 
 .item:hover {
-    background-color: var(--font-color);
-    color: var(--hover-text);
+    background-color: var(--calculated-hover);
+    color: var(--font-color);
 }
 
 .inputBox {
@@ -96,7 +96,7 @@ hr {
 }
 
 .weekdays {
-    background-color: var(--title-color);
+    background-color: var(--cal-weekday-color);
 }
 
 .weekdays li {
@@ -117,8 +117,8 @@ hr {
 }
 
 .days li .study {
-    background: var(--title-color);
-    color: var(--cal-date-color) !important;
+    background: var(--cal-weekday-color);
+    color: white !important;
 }
 
 
