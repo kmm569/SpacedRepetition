@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9QX7GQW2E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B9QX7GQW2E');
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Spaced Repetition</title>
+    <link href="./styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="./styles/themes/dark.css" rel="stylesheet" type="text/css" id="themeStyle" />
+    <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
+</head>
+
+<body>
+    <button id="themebutton">Theme</button>
+    <div id="testMod">
+        <button data-open-modal id="themebutton">Theme</button>
+
+        <dialog data-modal>
+            <div id="themebox">
+                <div id="themecontent">
+                    <a class="pageTitle" id="themeTitle">Themes</a><br>
+                    <form method="dialog">
+                        <select data-theme id="themeInput">
+                        <option class="themeSelect" value="dark" selected>Dark</option>
+                        <option class="themeSelect" value="monotonedark">Monotone Dark</option>
+                        <option class="themeSelect" value="dutchess">Dutchess</option>
+                    </select>
+                        <br>
+                        <button id="themeChoice" type="submit">Change</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+    </div>
+    <div id="topBar">
+        <a class="pageTitle"> Spaced Repetition Calculator </a>
+        <br />
+        <a class="item" href="index.html" id="hm">Guide</a>
+        <a> | </a>
+        <a class="item" href="spacedTopics.html" id="sbj">Topic Scheduler</a>
+        <a> | </a>
+        <a class="item" id="test">Test Scheduler</a>
+    </div>
+
+    <div id="mainBody">
+        <div id="sbj-form">
+            <div class="section">
+                <label class="inputLabel" for="dot"> Date of test </label>
+                <br />
+                <input class="inputBox topBox" name="dot" type="date" id="dot" /><br><br>
+                <label class="inputLabel" id="yearCheck" for="carryYear">Do you want to use the same year for all topic entries?</label><br>
+                <input class="checkBox" name="carryYear" type="checkbox" id="carryYear" />
+            </div>
+            <br />
+            <div class="section">
+                <label class="inputLabel" for="numSub">
+            Number of subjects/topics covered
+          </label>
+                <br />
+                <input class="inputBox topBox" type="number" min="0" max="12" name="numSub" id="numSub" />
+            </div>
+            <br />
+            <div class="section" id="subject-section">
+                <label class="inputLabel" for="assignDates"> Topic Info </label>
+                <table id="subject-table">
+                    <tr>
+                        <td class="table-head">
+                            Topic Name<sup title="If left blank, a numerical value will be assigned">?</sup>
+                        </td>
+                        <td class="table-head">First Study Date</td>
+                        <td class="table-head">Difficulty</td>
+                    </tr>
+                </table>
+                <br>
+                <div id="errormsg"></div>
+            </div>
+
+            <div class="section">
+                <button class="cButton" id="submit">Calculate</button>
+            </div>
+        </div>
+
+        <div class="submittedTemp">
+            <br />
+            <hr />
+            <div id="returnDates">
+                <p><strong>Below are your study dates</strong></p>
+                <div id="study-dates"></div>
+            </div>
+            <div id="calendar"></div>
+            <br />
+            <div id="calendar-links"></div>
+            <br />
+            <button class="cButton" id="export">Export Plan</button>
+            <button class="cButton" id="goback">Start Over</button>
+        </div>
+    </div>
+
+    <script type="module" src="./scripts/main.js"></script>
+
+</body>
+
+</html>

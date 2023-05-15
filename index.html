@@ -3,98 +3,143 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B9QX7GQW2E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9QX7GQW2E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-B9QX7GQW2E');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B9QX7GQW2E');
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Spaced Repetition</title>
     <link href="./styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="./styles/startPage.css" rel="stylesheet" type="text/css" />
     <link href="./styles/themes/dark.css" rel="stylesheet" type="text/css" id="themeStyle" />
-    <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 </head>
 
 <body>
     <button id="themebutton">Theme</button>
-    <div id="blackout"></div>
-    <div id="themepopup">
-        <div id="themebox">
-            <div id="themecontent">
-                <a class="pageTitle" id="themeTitle">Themes</a><br>
-                <select id="themeInput">
-                    <option class="themeSelect" value="dark" selected>Dark</option>
-                    <option class="themeSelect" value="monotonedark">Monotone Dark</option>
-                    <option class="themeSelect" value="dutchess">Dutchess</option>
-                </select>
+    <div id="testMod">
+        <button data-open-modal id="themebutton">Theme</button>
+
+        <dialog data-modal>
+            <div id="themebox">
+                <div id="themecontent">
+                    <a class="pageTitle" id="themeTitle">Themes</a><br>
+                    <form method="dialog">
+                        <select data-theme id="themeInput">
+                        <option class="themeSelect" value="dark" selected>Dark</option>
+                        <option class="themeSelect" value="monotonedark">Monotone Dark</option>
+                        <option class="themeSelect" value="dutchess">Dutchess</option>
+                    </select>
+                        <br>
+                        <button id="themeChoice" type="submit">Change</button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </dialog>
     </div>
     <div id="topBar">
         <a class="pageTitle"> Spaced Repetition Calculator </a>
         <br />
-        <a class="item selected" id="sbj">Topic Scheduler</a>
+        <a class="item" href="index.html" id="hm">Guide</a>
+        <a> | </a>
+        <a class="item" href="spacedTopics.html" id="sbj">Topic Scheduler</a>
         <a> | </a>
         <a class="item" id="test">Test Scheduler</a>
     </div>
 
-    <div id="mainBody">
-        <div id="sbj-form">
-            <div class="section">
-                <label class="inputLabel" for="dot"> Date of test </label>
-                <br />
-                <input class="inputBox topBox" name="dot" type="date" id="dot" /><br><br>
-                <label class="inputLabel" id="yearCheck" for="carryYear">Do you want to use the same year for all topic entries?</label><br>
-                <input class="checkBox" name="carryYear" type="checkbox" id="carryYear" />
-            </div>
-            <br />
-            <div class="section">
-                <label class="inputLabel" for="numSub">
-            Number of subjects/topics covered
-          </label>
-                <br />
-                <input class="inputBox topBox" type="number" min="0" max="12" name="numSub" id="numSub" />
-            </div>
-            <br />
-            <div class="section" id="subject-section">
-                <label class="inputLabel" for="assignDates"> Topic Info </label>
-                <table id="subject-table">
-                    <tr>
-                        <td class="table-head">
-                            Topic Name<sup title="If left blank, a numerical value will be assigned">?</sup>
-                        </td>
-                        <td class="table-head">First Study Date</td>
-                        <td class="table-head">Difficulty</td>
-                    </tr>
-                </table>
-                <br />
-                <div id="errormsg"></div>
-            </div>
-            <br />
-            <div class="section">
-                <button class="cButton" id="submit">Calculate</button>
-            </div>
-        </div>
+    <h1>Spaced Repetition Site Guide</h1>
+    <div class="main-content">
+        <h2 id="what-is-spaced-repetition-">What is &quot;spaced repetition&quot;?</h2>
+        <p>&quot;Spaced repetition is a powerful technique that will help you memorize information in much less time than it would take otherwise. The idea of spaced repetition is to space out your repetitions – or review sessions – so that you are not trying
+            to cram all the knowledge into your brain at once.&quot;<sup><a href="https://e-student.org/spaced-repetition/">1</a></sup> </p>
+        <h2 id="what-are-some-benefits-">What are some benefits?</h2>
+        <ul>
+            <li>It continually re-exposes you to information.</li>
+            <li>It helps strengthen your memory.</li>
+            <li>It helps to increase active study time and learning, rather than just passively taking in information that may or may not be remembered.</li>
+            <li>It helps you to relate new material with previously stored material, and make connections.</li>
+        </ul>
+    </div>
+    <div class="tut-content">
+        <h2 id="how-do-i-use-this-tool-">How do I use this tool?</h2>
+        <ol>
+            <li>Go to the Topic Scheduler page</li>
+            <li>Enter your test date at the top</li>
+            <li>If you would like to use the same year for everything (so that you don&#39;t need to type it in repeatedly), check the box.</li>
+            <li>Enter the number of topics you need to study.</li>
+            <li>Enter a name for each topic. If you leave the names blank, a number will be assigned.</li>
+            <li>Enter the dates that you would like to start studying each topic. This could be the day you learn the material, or just the day you plan on starting.</li>
+            <li>Finally, rate the difficulty of the topic. The harder a topic is, the more often it should be studied.</li>
+            <li>Hit calculate!</li>
+        </ol>
+        <p>From here, a list of study dates will come up, along with a calendar to help visualize the study plan. If there is a superscript on a date (and it&#39;s highlighted), you can hover over it to see a list of the study topics for that day. The number
+            represents the number of topics to study on that day.<br>At the bottom of the page, you can also export these dates to your calendar, or start the process over.</p>
+    </div>
+    <div class="pic-content">
+        <h2>Pictures, please!</h2>
+        <ol>
+            <li>Go to the Topic Scheduler page<br>
+                <a>
+                    <img src="./images/guide/steps/1.png"></img>
+                </a>
+            </li>
+            <li>Enter your test date at the top<br>
+                <a>
+                    <img src="./images/guide/steps/2.png"></img>
+                </a>
+            </li>
+            <li>If you would like to use the same year for everything (so that you don&#39;t need to type it in repeatedly), check the box.</li>
+            <li>Enter the number of topics you need to study.<br>
+                <a>
+                    <img src="./images/guide/steps/3.png"></img>
+                </a>
+            </li>
+            <li>Enter a name for each topic. If you leave the names blank, a number will be assigned.<br>
+                <a>
+                    <img src="./images/guide/steps/4.png"></img>
+                </a>
+            </li>
+            <li>Enter the dates that you would like to start studying each topic. This could be the day you learn the material, or just the day you plan on starting.<br>
+                <a>
+                    <img src="./images/guide/steps/5.png"></img>
+                </a>
+            </li>
+            <li>Finally, rate the difficulty of the topic. The harder a topic is, the more often it should be studied.<br>
+                <a>
+                    <img src="./images/guide/steps/6.png"></img>
+                </a>
+            </li>
+            <li>Hit calculate!<br>
+                <a>
+                    <img src="./images/guide/steps/7.png"></img>
+                </a>
+            </li>
+        </ol>
+        <p>From here, a list of study dates will come up, along with a calendar to help visualize the study plan. If there is a superscript on a date (and it&#39;s highlighted), you can hover over it to see a list of the study topics for that day. The number
+            represents the number of topics to study on that day.<br>At the bottom of the page, you can also export these dates to your calendar, or start the process over.</p>
+    </div>
+    <div class="tut-content">
+        <h2 id="upcoming-features-future-plans">Upcoming features/Future plans</h2>
+        <ul>
+            <li>Export study dates to a downloadable PDF</li>
+            <li>Connect with Outlook to add an entire study plan at once</li>
+            <li>Generate an hourly study plan for each day</li>
+            <li>Plan for multiple tests at once</li>
+        </ul>
 
-        <div class="submittedTemp">
-            <br />
-            <hr />
-            <p>Below are your study dates</p>
-            <div id="study-dates"></div>
-            <div id="calendar"></div>
-            <br />
-            <div id="calendar-links"></div>
-            <br />
-            <button class="cButton" id="goback">Start Over</button>
-        </div>
     </div>
 
-    <script src="./scripts/main.js"></script>
-
+    <div id="coffeebutton">
+        <a href="https://www.buymeacoffee.com/gothamstudios"><img src="https://img.buymeacoffee.com/button-api/?text=Help support development&emoji=☕&slug=gothamstudios&button_colour=5F7FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" /></a>
+    </div>
+    <script src="./scripts/info.js"></script>
 </body>
 
 </html>
