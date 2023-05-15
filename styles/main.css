@@ -51,6 +51,11 @@ hr {
     cursor: not-allowed;
 }
 
+#export:hover {
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
 .selected {
     text-decoration: underline;
 }
@@ -86,18 +91,25 @@ hr {
     height: 100%;
 }
 
-#themebox {
-    position: absolute;
+dialog {
     padding: 30px 50px;
     border-radius: 10px;
     text-align: center;
     width: fit-content;
     height: fit-content;
-    z-index: 99;
 }
 
-#themecontent {
-    z-index: 99;
+#themeChoice {
+    border-radius: 8px;
+    border-width: 0;
+    margin-top: 12px;
+    margin-bottom: 0;
+    padding: 3px;
+    font-size: 16px;
+}
+
+#themeChoice:hover {
+    cursor: pointer;
 }
 
 #themebutton {
@@ -159,6 +171,13 @@ table {
 
 .section:has .cButton {
     padding-top: 0;
+}
+
+#sbj-form {
+    margin: 0 auto;
+    width: fit-content;
+    padding: 15px 20px;
+    border-radius: 10px;
 }
 
 .cButton:hover {
@@ -229,6 +248,13 @@ sup {
     margin: 0 auto;
 }
 
+#returnDates {
+    width: fit-content;
+    margin: 5px auto;
+    padding: 8px 3%;
+    border-radius: 10px;
+}
+
 .dateList {
     text-align: left;
 }
@@ -254,6 +280,11 @@ sup {
     padding: 30px 0;
     width: 100%;
     text-align: center;
+}
+
+.monTitle {
+    font-style: italic;
+    font-size: 18px;
 }
 
 .month ul {

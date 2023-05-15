@@ -6,7 +6,8 @@
     /* page values */
     --title-color: #E0DDCF;
     --top-bar-color: #534B52;
-    --font-color: #d0cfcc;
+    /*--font-color: #d0cfcc;*/
+    --font-color: var(--top-bar-color);
     --link-color: #F1F0EA;
     --calculated-hover: #474448;
     --page-background: #2D232E;
@@ -21,6 +22,22 @@ body {
     background-color: var(--page-background);
 }
 
+#sbj-form {
+    background-color: var(--title-color);
+}
+
+.main-content {
+    background-color: var(--title-color);
+}
+
+.tut-content {
+    background-color: var(--title-color);
+}
+
+.pic-content {
+    background-color: var(--title-color);
+}
+
 hr {
     background-color: var(--font-color);
 }
@@ -29,7 +46,7 @@ hr {
     color: var(--title-color);
 }
 
-#themebox {
+dialog {
     background-color: var(--top-bar-color);
 }
 
@@ -64,8 +81,12 @@ hr {
     color: var(--hover-text);
 }
 
+#returnDates {
+    background-color: var(--title-color);
+}
+
 .item:hover {
-    background-color: var(--font-color);
+    background-color: var(--title-color);
     color: var(--hover-text);
 }
 

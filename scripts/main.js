@@ -1,3 +1,6 @@
+//let buildPrint = require('./generatePrint');
+import { buildMonth } from './generatePrint.js';
+
 const testDate = document.getElementById("dot");
 const subjects = document.getElementById("numSub");
 const subInfo = document.getElementById("subject-section");
@@ -16,25 +19,30 @@ const blackout = document.getElementById('blackout');
 const themePopup = document.getElementById('themepopup');
 const themeButton = document.getElementById('themebutton');
 const yearButton = document.getElementById('carryYear');
+const exportB = document.getElementById('export');
+const openButton = document.querySelector('[data-open-modal]');
+const closeButton = document.querySelector('[data-close-modal]');
+const modal = document.querySelector('[data-modal]');
+const themeVal = document.querySelector('[data-theme]');
 
 let currentRows = 0;
-let sameYear;
 let chosen = -1;
 
-themeValue.addEventListener('input', () => {
-    stylesheet.href = `./styles/themes/${themeValue.value}.css`;
-});
+window.onload = () => {
+    document.getElementById('sbj').classList.add('selected');
+    if (localStorage.getItem('theme')) {
+        stylesheet.href = `./styles/themes/${localStorage.getItem('theme')}.css`
+    }
+}
 
-blackout.addEventListener('click', () => {
-    themePopup.style.display = 'none';
-    blackout.style.display = "none";
-});
+openButton.addEventListener('click', () => {
+    modal.showModal();
+})
 
-themeButton.addEventListener('click', () => {
-    themePopup.style.display = 'flex';
-    blackout.style.display = 'block';
-
-});
+modal.addEventListener('close', () => {
+    localStorage.setItem('theme', themeVal.value);
+    stylesheet.href = `./styles/themes/${themeVal.value}.css`;
+})
 
 yearButton.addEventListener('click', () => {
     chosen *= -1;
@@ -60,6 +68,7 @@ submit.addEventListener("click", () => {
         document.getElementById("errormsg").innerHTML = "";
         submitDiv.style.display = "block";
         back.style.display = 'inline-block';
+        exportB.style.display = 'inline-block';
     }
 });
 
@@ -71,7 +80,11 @@ back.addEventListener("click", () => {
     updateRows(0);
 });
 
-
+/*
+exportB.addEventListener('click', () => {
+    console.log('time to build');
+    location.href = '../print-page.html';
+})*/
 
 const updateRows = (newRowCount) => {
     if (newRowCount > currentRows) {
@@ -157,7 +170,7 @@ function calcRep() {
 
     for (var k = 0; k < topicMonths.length;k++) {
         if (topicYears[k].value == "" || topicMonths[k].value == '' || topicDays[k].value == '') {
-            document.getElementById("errormsg").innerHTML = "Please enter all topic dates before continuing!";
+            document.getElementById("errormsg").innerHTML = "Please enter all topic dates before continuing!<br><br>";
             return false;
         } else {
             topicDates.push(`${topicYears[k].value}-${topicMonths[k].value}-${topicDays[k].value}`);
@@ -173,7 +186,12 @@ function calcRep() {
 
     for (let n in topicNames) {
         if (!topicNames[n].value) {
-            topicNames[n].value = Number(n) + 1;
+            try {
+                topicNames[n].value = Number(n) + 1;
+                break;
+            } catch (e) {
+                console.log(e);
+            }
         }
     }
 
@@ -183,7 +201,7 @@ function calcRep() {
         const testDateValue = new Date(`${testDate.value}T00:00`).valueOf();
 
         if (dateValue > testDateValue) {
-            document.getElementById("errormsg").innerHTML = "All topic dates must be before the test date!";
+            document.getElementById("errormsg").innerHTML = "All topic dates must be before the test date!<br><br>";
             return false;
         }
 
@@ -238,7 +256,7 @@ function calcRep() {
                 .map((v) => v[1]);
             const monthYr = k.split("-");
             const todaysStr = todays.join(", ");
-            const dateString = `${Number(monthYr[0])+1}/${o}/${monthYr[1]}: ${todaysStr}`;
+            const dateString = `${Number(monthYr[0]) + 1}/${o}/${monthYr[1]}: ${todaysStr}`;
             studyDays.push(dateString);
         }
         const monthTitle = document.createElement("span");
@@ -255,6 +273,14 @@ function calcRep() {
         monthDiv.appendChild(datesContainer);
 
         studyAssignment.appendChild(monthDiv);
+
+        const go = async() => {
+            let result = await buildMonth(months[k.split('-')[0]], stDays);
+            return result;
+        }
+
+        //WONT CHANGE PRINT SHEET
+        //go();
         buildCalendar(k, stDays);
     }
 
@@ -336,4 +362,12 @@ function buildCalendar(monYr, stDays) {
 
     cal.append(month, dayNames, days);
     calendar.appendChild(cal);
+}
+
+async function newwindow()  
+{  
+    window.open('../print-page.html','','width=,height=,resizable=no');  
+    window.resizeTo(0,0); 
+    window.moveTo(0, window.screen.availHeight + 10);
+    return window;
 }

@@ -8,7 +8,8 @@
     --title-color: #8DA6C0;
     /*done*/
     --top-bar-color: #165384;
-    --font-color: #7799BB;
+    /*--font-color: #7799BB;*/
+    --font-color: var(--top-bar-color);
     /*done*/
     --link-color: #D7E4F0;
     /*done*/
@@ -27,6 +28,22 @@ body {
     background-color: var(--page-background);
 }
 
+#sbj-form {
+    background-color: var(--title-color);
+}
+
+.main-content {
+    background-color: var(--title-color);
+}
+
+.tut-content {
+    background-color: var(--title-color);
+}
+
+.pic-content {
+    background-color: var(--title-color);
+}
+
 hr {
     background-color: var(--font-color);
 }
@@ -35,7 +52,7 @@ hr {
     color: var(--title-color);
 }
 
-#themebox {
+dialog {
     background-color: var(--top-bar-color);
 }
 
@@ -51,6 +68,10 @@ hr {
 
 .subDiff {
     background-color: var(--link-color);
+}
+
+#returnDates {
+    background-color: var(--title-color);
 }
 
 .subDiff::-webkit-slider-thumb {
@@ -71,7 +92,7 @@ hr {
 }
 
 .item:hover {
-    background-color: var(--font-color);
+    background-color: var(--title-color);
     color: var(--hover-text);
 }
 
@@ -85,6 +106,16 @@ hr {
 }
 
 .cButton:hover {
+    background-color: var(--calculated-hover);
+    color: var(--font-color);
+}
+
+#themeChoice {
+    background-color: var(--font-color);
+    color: var(--page-background);
+}
+
+#themeChoice:hover {
     background-color: var(--calculated-hover);
     color: var(--font-color);
 }

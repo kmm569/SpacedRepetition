@@ -1,0 +1,107 @@
+:root {
+    /* caldendar values */
+    --cal-weekday-color: #8DA6C0;
+    --cal-day-color: #EEF4F4;
+    --cal-monthtxt-color: white;
+    --cal-date-color: #777;
+    /* page values */
+    --title-color: #8DA6C0;
+    /*done*/
+    --top-bar-color: #165384;
+    /*--font-color: #7799BB;*/
+    --font-color: var(--top-bar-color);
+    /*done*/
+    --link-color: #D7E4F0;
+    /*done*/
+    --disabled-background: #5E5E5E;
+    /*done*/
+    --hover-text: #000;
+    /*done*/
+    --calculated-hover: #022847;
+    /*done*/
+    --page-background: #011627;
+    --error-msg: darkred;
+}
+
+h1 {
+    text-align: center;
+    color: var(--title-color);
+}
+
+h2 {
+    text-align: center;
+}
+
+.main-content {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    align-content: center;
+    text-align: center;
+}
+
+.main-content>ul {
+    width: 90%;
+    list-style-position: inside;
+}
+
+.main-content>p {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.tut-content>p {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.tut-content {
+    width: 50%;
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 10px;
+    align-content: center;
+    text-align: left;
+}
+
+.tut-content>ol {
+    width: 90%;
+    list-style-position: inside;
+    line-height: 30px;
+}
+
+.pic-content>p {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.pic-content {
+    width: 50%;
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 10px;
+    align-content: center;
+    text-align: left;
+}
+
+.pic-content>ol {
+    width: 90%;
+    list-style-position: inside;
+    line-height: 30px;
+}
+
+.pic-content>ol>li>a>img {
+    height: auto;
+    width: 80%;
+    align-content: center;
+    border-radius: 8px;
+    border-width: 5px;
+    border-style: solid;
+}
+
+#coffeebutton {
+    margin: 0 auto;
+    text-align: center;
+}
