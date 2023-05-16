@@ -1,6 +1,3 @@
-//let buildPrint = require('./generatePrint');
-//import { buildMonth } from './generatePrint.js';
-
 /**
  * SESSION STORAGE VALUES
  * 'theme' - Theme choice
