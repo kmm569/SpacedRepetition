@@ -4,7 +4,7 @@
  * 'testDate-elm' - Test Date
  * 'useYear' - Year button value
  * 'currentRows' - Number of topic rows
- * 'rowxVals' - Values for each topic row
+ * 'row[x][Name/Date/Difficulty]' - Values for each topic row
  */
 
 const stylesheet = document.getElementById('themeStyle');
@@ -36,6 +36,7 @@ const themeVal = document.querySelector('[data-theme]');
 
 let currentRows = 0;
 let chosen = -1;
+let showError = 0;
 
 window.onload = () => {
     document.getElementById('sbj').classList.add('selected');
@@ -71,8 +72,9 @@ subjects.addEventListener("change", () => {
 });
 
 submit.addEventListener("click", () => {
+    showError = 0;
     if (calcRep()) {
-        document.getElementById("errormsg").innerHTML = "";
+        (showError ? null : document.getElementById("errormsg").innerHTML = "");
         submitDiv.style.display = "block";
         back.style.display = 'inline-block';
         exportB.style.display = 'inline-block';
@@ -172,6 +174,8 @@ function calcRep() {
         "November",
         "December",
     ];
+
+    
     const topicNames = document.getElementsByClassName("subNames");
     //const topicDates = document.getElementsByClassName("subDates");
 
@@ -180,6 +184,10 @@ function calcRep() {
     const topicDays = document.getElementsByClassName('subDayVal');
     const topicYears = document.getElementsByClassName('subYearVal');
 
+    if (testDate.value == "") {
+        document.getElementById("errormsg").innerHTML = "Please enter the test date before continuing!<br><br>";
+        return false;
+    }
 
     for (var k = 0; k < topicMonths.length;k++) {
         if (topicYears[k].value == "" || topicMonths[k].value == '' || topicDays[k].value == '') {
@@ -212,9 +220,18 @@ function calcRep() {
     }
 
     let i = 0;
+    const testDateValue = new Date(`${testDate.value}T00:00`).valueOf();
+
+    if (Math.abs(Date.now() - testDateValue) > 63072000000) {
+        document.getElementById('errormsg').innerHTML = 'Test date cannot be more than 2 years away from today.<br><br>';
+        return false;
+    } else if (Math.abs(Date.now() - testDateValue) < 259200000) {
+        document.getElementById('errormsg').innerHTML = 'I\'ll let you calculate this, but I\'m going to judge you for it.<br><br>';
+        showError = 1;
+    }
+
     for (let d of topicDates) {
         const dateValue = new Date(d).valueOf();
-        const testDateValue = new Date(`${testDate.value}T00:00`).valueOf();
 
         if (dateValue > testDateValue) {
             document.getElementById("errormsg").innerHTML = "All topic dates must be before the test date!<br><br>";
@@ -408,7 +425,7 @@ function loadSession() {
         console.log(sessionStorage.getItem(`row${r}Difficulty`));
 
         if (calcRep()) {
-            document.getElementById("errormsg").innerHTML = "";
+            (showError ? null : document.getElementById("errormsg").innerHTML = "");
             submitDiv.style.display = "block";
             back.style.display = 'inline-block';
             exportB.style.display = 'inline-block';
