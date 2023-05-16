@@ -226,7 +226,7 @@ function calcRep() {
         document.getElementById('errormsg').innerHTML = 'Test date cannot be more than 2 years away from today.<br><br>';
         return false;
     } else if (Math.abs(Date.now() - testDateValue) < 259200000) {
-        document.getElementById('errormsg').innerHTML = 'I\'ll let you calculate this, but I\'m going to judge you for it.<br><br>';
+        document.getElementById('errormsg').innerHTML = /* 'I\'ll let you calculate this, but I\'m going to judge you for it.<br><br>' */`Pro tip:<br>You\’re more likely to be successful if you start studying earlier!`;
         showError = 1;
     }
 
