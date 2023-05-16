@@ -28,6 +28,10 @@ body {
     background-color: var(--page-background);
 }
 
+#cover {
+    background-color: var(--page-background);
+}
+
 #sbj-form {
     background-color: var(--title-color);
 }

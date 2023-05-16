@@ -1,7 +1,7 @@
 :root {
     /* caldendar values */
     --cal-weekday-color: #4CB1E1;
-    --cal-day-color: #FAFAFF;
+    --cal-day-color: #dddde6;
     --cal-monthtxt-color: white;
     --cal-date-color: #777;
     /* page values */
@@ -19,6 +19,10 @@
 
 body {
     color: var(--font-color);
+    background-color: var(--page-background);
+}
+
+#cover {
     background-color: var(--page-background);
 }
 
@@ -154,4 +158,8 @@ dialog {
 
  ::-webkit-scrollbar-thumb:hover {
     background: var(--calculated-hover);
+}
+
+#placeholderDate {
+    color: var(--cal-day-color);
 }

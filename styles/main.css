@@ -51,11 +51,6 @@ hr {
     cursor: not-allowed;
 }
 
-#export:hover {
-    border-radius: 5px;
-    cursor: not-allowed;
-}
-
 .selected {
     text-decoration: underline;
 }

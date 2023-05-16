@@ -1,5 +1,18 @@
 //let buildPrint = require('./generatePrint');
-import { buildMonth } from './generatePrint.js';
+//import { buildMonth } from './generatePrint.js';
+
+/**
+ * SESSION STORAGE VALUES
+ * 'theme' - Theme choice
+ * 'testDate-elm' - Test Date
+ * 'useYear' - Year button value
+ * 'currentRows' - Number of topic rows
+ * 'rowxVals' - Values for each topic row
+ */
+
+const stylesheet = document.getElementById('themeStyle');
+let themeStore = localStorage.getItem('theme');
+stylesheet.href = `./styles/themes/${themeStore ? themeStore : "dark"}.css`
 
 const testDate = document.getElementById("dot");
 const subjects = document.getElementById("numSub");
@@ -14,7 +27,6 @@ const mainForm = document.getElementById("sbj-form");
 const submitDiv = document.querySelector(".submittedTemp");
 const themeValue = document.getElementById('themeInput');
 const themes = document.getElementsByClassName('themeSelect');
-const stylesheet = document.getElementById('themeStyle');
 const blackout = document.getElementById('blackout');
 const themePopup = document.getElementById('themepopup');
 const themeButton = document.getElementById('themebutton');
@@ -30,9 +42,8 @@ let chosen = -1;
 
 window.onload = () => {
     document.getElementById('sbj').classList.add('selected');
-    if (localStorage.getItem('theme')) {
-        stylesheet.href = `./styles/themes/${localStorage.getItem('theme')}.css`
-    }
+
+    loadSession();
 }
 
 openButton.addEventListener('click', () => {
@@ -58,8 +69,7 @@ yearButton.addEventListener('click', () => {
 })
 
 subjects.addEventListener("change", () => {
-    subInfo.style.display = subjects.value > 0 ? "block" : "none";
-    submit.style.display = subjects.value > 0 ? "inline-block" : "none";
+
     updateRows(subjects.value);
 });
 
@@ -69,6 +79,9 @@ submit.addEventListener("click", () => {
         submitDiv.style.display = "block";
         back.style.display = 'inline-block';
         exportB.style.display = 'inline-block';
+
+        sessionStorage.setItem('testDate-elm', testDate.value);
+        sessionStorage.setItem('useYear', chosen);
     }
 });
 
@@ -80,13 +93,15 @@ back.addEventListener("click", () => {
     updateRows(0);
 });
 
-/*
+
 exportB.addEventListener('click', () => {
     console.log('time to build');
     location.href = '../print-page.html';
-})*/
+})
 
 const updateRows = (newRowCount) => {
+    subInfo.style.display = subjects.value > 0 ? "block" : "none";
+    submit.style.display = subjects.value > 0 ? "inline-block" : "none";
     if (newRowCount > currentRows) {
         for (let i = 0; i < newRowCount - currentRows; i++) {
             addRow();
@@ -97,6 +112,7 @@ const updateRows = (newRowCount) => {
         }
     }
     currentRows = newRowCount;
+    sessionStorage.setItem('currentRows', currentRows);
 };
 
 function addRow() {
@@ -188,11 +204,14 @@ function calcRep() {
         if (!topicNames[n].value) {
             try {
                 topicNames[n].value = Number(n) + 1;
-                break;
             } catch (e) {
                 console.log(e);
             }
         }
+
+        sessionStorage.setItem(`row${n}Name`, topicNames[n].value);
+        sessionStorage.setItem(`row${n}Date`, topicDates[n]);
+        sessionStorage.setItem(`row${n}Difficulty`, topicDiff[n].value);
     }
 
     let i = 0;
@@ -243,6 +262,8 @@ function calcRep() {
 
     let unique = [...new Set(monYr)].sort((a, b) => a.split("-")[0] - b.split("-")[0]);
 
+
+    let printSched = [];
     for (let k of unique) {
         const monthDiv = document.createElement("div");
         monthDiv.classList.add("perMonth");
@@ -274,15 +295,16 @@ function calcRep() {
 
         studyAssignment.appendChild(monthDiv);
 
-        const go = async() => {
-            let result = await buildMonth(months[k.split('-')[0]], stDays);
-            return result;
-        }
-
         //WONT CHANGE PRINT SHEET
         //go();
+        printSched.push(`${k}>${stDays.join('|')}`);
         buildCalendar(k, stDays);
+
     }
+
+    printSched = printSched.join('()');
+    sessionStorage.setItem('print', printSched);
+    sessionStorage.setItem('test-day', testDate.value);
 
     return true;
 }
@@ -356,7 +378,7 @@ function buildCalendar(monYr, stDays) {
     const left = firstDay + totalDays;
     if (left < 42) {
         for (let l = 0; l < 42 - left; l++) {
-            days.insertAdjacentHTML("beforeend", '<li style="color:#EEF4F4">0</li>');
+            days.insertAdjacentHTML("beforeend", '<li id="placeholderDate">0</li>');
         }
     }
 
@@ -364,10 +386,39 @@ function buildCalendar(monYr, stDays) {
     calendar.appendChild(cal);
 }
 
-async function newwindow()  
-{  
-    window.open('../print-page.html','','width=,height=,resizable=no');  
-    window.resizeTo(0,0); 
-    window.moveTo(0, window.screen.availHeight + 10);
-    return window;
+function loadSession() {
+    testDate.value = sessionStorage.getItem('testDate-elm');
+    yearButton.checked = sessionStorage.getItem('useYear') == 1 ? true : false;
+    subjects.value = sessionStorage.getItem('currentRows');
+    updateRows(Number(sessionStorage.getItem('currentRows')));
+
+    const topicMonths = document.getElementsByClassName('subMonthVal');
+    const topicDays = document.getElementsByClassName('subDayVal');
+    const topicYears = document.getElementsByClassName('subYearVal');
+    const topicNames = document.getElementsByClassName("subNames");
+    const topicDiff = document.getElementsByClassName("subDiff");
+
+    for (var r = 0; r < Number(sessionStorage.getItem('currentRows'));r++) {
+        let date = sessionStorage.getItem(`row${r}Date`);
+        topicNames[r].value = sessionStorage.getItem(`row${r}Name`);
+        topicMonths[r].value = date.split('-')[1];
+        topicDays[r].value = date.split('-')[2];
+        topicYears[r].value = date.split('-')[0];
+        topicDiff[r].value = sessionStorage.getItem(`row${r}Difficulty`);
+
+        console.log(sessionStorage.getItem(`row${r}Date`));
+        console.log(sessionStorage.getItem(`row${r}Name`));
+        console.log(sessionStorage.getItem(`row${r}Difficulty`));
+
+        if (calcRep()) {
+            document.getElementById("errormsg").innerHTML = "";
+            submitDiv.style.display = "block";
+            back.style.display = 'inline-block';
+            exportB.style.display = 'inline-block';
+    
+            sessionStorage.setItem('testDate-elm', testDate.value);
+            sessionStorage.setItem('useYear', chosen);
+        }
+        
+    }
 }

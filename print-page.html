@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9QX7GQW2E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B9QX7GQW2E');
+    </script>
+
+    <link href="./styles/print.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" id="themeStyle" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div id="downloaded">
+        <h1 id="top">Thanks for downloading!</h1>
+        <div class="background">
+            <p>If your download doesn't start automatically, please refresh this page.</p>
+            <a href="./spacedTopics.html"><button id="themebutton">Back to main site</button></a>
+        </div>
+    </div>
+    <div id="cover"></div>
+    <div id="printPage" class="page">
+        <div class="page-content">
+            <h1>Spaced Repetition<br>Study Schedule</h1>
+            <p>This sheet was generated to help you plan when you should study for your test based on the spaced repetition model.</p><br>
+            <div class="gens" id="testDate">
+                Test on: 1/1/2003
+            </div>
+            <div class="gens" id="genDate">
+                Generated on: date
+            </div>
+            <div id="months">
+            </div>
+            <footer style="text-align:center;padding:10px;">https://study.gothamstudios.us - v0.7</footer>
+        </div>
+    </div>
+
+    <script type="module" src="./scripts/generatePrint.js" async defer></script>
+</body>
+
+</html>
