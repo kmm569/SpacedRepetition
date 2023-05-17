@@ -46,11 +46,24 @@ window.onload = () => {
 
 openButton.addEventListener('click', () => {
     modal.showModal();
+    themeVal.value = localStorage.getItem('theme');
 })
 
 modal.addEventListener('close', () => {
     localStorage.setItem('theme', themeVal.value);
     stylesheet.href = `./styles/themes/${themeVal.value}.css`;
+})
+
+modal.addEventListener("click", e => {
+    const dialogDimensions = modal.getBoundingClientRect()
+    if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+    ) {
+        modal.close()
+    }
 })
 
 yearButton.addEventListener('click', () => {

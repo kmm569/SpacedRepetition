@@ -23,8 +23,9 @@
 </head>
 
 <body>
-    <div id="testMod">
-        <button data-open-modal id="themebutton">Theme</button>
+    <div id="topLeftButtons">
+        <button data-open-modal class="darkButton topLeft" id="themebutton">Theme</button>
+        <!-- <button data-open-modal class="darkButton topLeft" id="savebutton">Saves</button> -->
 
         <dialog data-modal>
             <div id="themebox">
@@ -56,8 +57,8 @@
     <h1>Spaced Repetition Site Guide</h1>
     <div class="main-content">
         <h2 id="what-is-spaced-repetition-">What is &quot;spaced repetition&quot;?</h2>
-        <p>&quot;Spaced repetition is a powerful technique that will help you memorize information in much less time than it would take otherwise. The idea of spaced repetition is to space out your repetitions – or review sessions – so that you are not trying
-            to cram all the knowledge into your brain at once.&quot;<sup><a href="https://e-student.org/spaced-repetition/">1</a></sup> </p>
+        <p>Spaced repetition is a powerful technique that will help you memorize information in much less time than it would take otherwise. The idea of spaced repetition is to space out your repetitions – or review sessions – so that you are not trying
+            to cram all the knowledge into your brain at once.<sup><a href="https://e-student.org/spaced-repetition/">1</a></sup> </p>
         <h2 id="what-are-some-benefits-">What are some benefits?</h2>
         <ul>
             <li>It continually re-exposes you to information.</li>
@@ -127,7 +128,6 @@
     <div class="tut-content">
         <h2 id="upcoming-features-future-plans">Upcoming features/Future plans</h2>
         <ul>
-            <li>Export study dates to a downloadable PDF</li>
             <li>Connect with Outlook to add an entire study plan at once</li>
             <li>Generate an hourly study plan for each day</li>
             <li>Plan for multiple tests at once</li>
@@ -135,10 +135,22 @@
 
     </div>
 
+    <button class="darkButton" id="feedbackButton"><a href="">
+        Feedback/Bug Reports
+    </a></button>
     <div id="coffeebutton">
         <a href="https://www.buymeacoffee.com/gothamstudios"><img src="https://img.buymeacoffee.com/button-api/?text=Help support development&emoji=☕&slug=gothamstudios&button_colour=5F7FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" /></a>
     </div>
-    <footer style="text-align:center;padding:10px;">&copy; Copyright 2023 https://study.gothamstudios.us - v0.7.1</footer>
+    <footer style="text-align:center;padding:10px;">
+        <div class="bottomlinks">
+            <ul>
+                <li><a href="mailto:kmusial@gothamstudios.us" target="_blank">Contact</a></li> |
+                <li><a href="https://github.com/GothamGamer117/SpacedRepetition" target="_blank">Github</a></li> |
+                <li><a href="https://forms.gle/HKm8mLoDdUts6Y889" target="_blank">Feedback/Bug Report</a></li>
+            </ul>
+        </div>
+        &copy; Copyright 2023 Kaitlyn Musial https://study.gothamstudios.us - v0.7.2
+    </footer>
     <script src="./scripts/info.js"></script>
 </body>
 

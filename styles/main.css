@@ -6,12 +6,17 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
-    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--font-color);
+    background-color: var(--page-background);
 }
 
 hr {
     height: 2px;
     border: none;
+    background-color: var(--font-color);
 }
 
 #mainBody {
@@ -20,6 +25,7 @@ hr {
 
 .pageTitle {
     font-size: 20px;
+    color: var(--title-color);
 }
 
 #topBar {
@@ -31,6 +37,7 @@ hr {
     width: fit-content;
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
+    background-color: var(--top-bar-color);
 }
 
 #carryYear {
@@ -45,11 +52,14 @@ hr {
     padding: 3px;
     font-size: 16px;
     transition: color 0.25s ease-out;
+    color: var(--link-color);
 }
 
 #test:hover {
     border-radius: 5px;
     cursor: not-allowed;
+    background-color: var(--disabled-background);
+    color: var(--hover-text);
 }
 
 .selected {
@@ -59,6 +69,8 @@ hr {
 .item:hover {
     border-radius: 5px;
     cursor: pointer;
+    background-color: var(--title-color);
+    color: var(--hover-text);
 }
 
 .section {
@@ -93,6 +105,11 @@ dialog {
     text-align: center;
     width: fit-content;
     height: fit-content;
+    background-color: var(--top-bar-color);
+}
+
+dialog::backdrop {
+    background-color: hsl(255, 0%, 0%, 0.5);
 }
 
 #themeChoice {
@@ -102,19 +119,31 @@ dialog {
     margin-bottom: 0;
     padding: 3px;
     font-size: 16px;
+    background-color: var(--calculated-hover);
+    color: var(--title-color);
 }
 
 #themeChoice:hover {
     cursor: pointer;
+    background-color: var(--title-color);
+    color: var(--font-color);
 }
 
-#themebutton {
-    display: inline-block;
-    position: absolute;
-    margin: 15px;
-    padding: 5px 8px;
+.darkButton {
     border-radius: 8px;
     border: 0;
+    background-color: var(--top-bar-color);
+    color: var(--title-color);
+}
+
+.topLeft {
+    margin: 10px 0 0 10px;
+    padding: 5px 8px;
+}
+
+#topLeftButtons {
+    display: inline-block;
+    position: absolute;
 }
 
 #themeTitle {
@@ -142,6 +171,7 @@ dialog {
     padding: 3px;
     text-align: center;
     margin-top: 3px;
+    background-color: var(--link-color);
 }
 
 #numSub {
@@ -163,6 +193,8 @@ table {
     padding: 5px;
     font-size: 16px;
     display: none;
+    background-color: var(--font-color);
+    color: var(--page-background);
 }
 
 .section:has .cButton {
@@ -174,10 +206,13 @@ table {
     width: fit-content;
     padding: 15px 20px;
     border-radius: 10px;
+    background-color: var(--title-color);
 }
 
 .cButton:hover {
     cursor: pointer;
+    background-color: var(--calculated-hover);
+    color: var(--font-color);
 }
 
 #goback {
@@ -191,6 +226,7 @@ table {
     height: 8px;
     border-radius: 5px;
     outline: none;
+    background-color: var(--link-color);
 }
 
 .subDiff::-webkit-slider-thumb {
@@ -200,6 +236,7 @@ table {
     height: 18px;
     border-radius: 50%;
     cursor: pointer;
+    background: var(--top-bar-color);
 }
 
 #subject-section {
@@ -249,6 +286,7 @@ sup {
     margin: 5px auto;
     padding: 8px 3%;
     border-radius: 10px;
+    background-color: var(--title-color);
 }
 
 .dateList {
@@ -276,6 +314,7 @@ sup {
     padding: 30px 0;
     width: 100%;
     text-align: center;
+    background: var(--top-bar-color);
 }
 
 .monTitle {
@@ -293,24 +332,28 @@ sup {
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    color: var(--cal-monthtxt-color);
 }
 
 .weekdays {
     width: 100%;
     margin: 0;
     padding: 10px 0;
+    background-color: var(--cal-weekday-color);
 }
 
 .weekdays li {
     display: inline-block;
     width: 13.6%;
     text-align: center;
+    color: var(--top-bar-color);
 }
 
 .days {
     width: 100%;
     padding: 10px 0;
     margin: 0;
+    background: var(--cal-day-color);
 }
 
 .days li {
@@ -320,16 +363,21 @@ sup {
     text-align: center;
     margin-bottom: 5px;
     font-size: 12px;
+    color: var(--cal-date-color);
 }
 
 .days li .active {
     padding: 3px;
     border-radius: 5px;
+    background: var(--top-bar-color);
+    color: white !important;
 }
 
 .days li .study {
     padding: 3px;
     border-radius: 5px;
+    background: var(--cal-weekday-color);
+    color: white;
 }
 
 #calendar-links {
@@ -354,6 +402,11 @@ sup {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 30px;
+    background: var(--top-bar-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--calculated-hover);
 }
 
 
@@ -419,4 +472,45 @@ sup {
 .indvDate[type=number] {
     -moz-appearance: textfield;
     appearance: textfield;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.bottomlinks>ul>li {
+    display: inline-block;
+    text-decoration: none;
+    list-style: none;
+}
+
+.bottomlinks>ul>li>a:hover {
+    color: var(--title-color);
+}
+
+.bottomlinks>ul>li>a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+#errormsg {
+    color: var(--error-msg);
+}
+
+#feedbackButton {
+    text-align: center;
+    margin: 0 auto 15px auto;
+    padding: 5px 8px;
+    width: fit-content;
+}
+
+.darkButton:hover {
+    background-color: var(--calculated-hover);
+    color: var(--link-color);
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }

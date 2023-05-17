@@ -72,26 +72,30 @@ function setPage(monthContainer, testContainer, genContainer) {
 
 function savePage(date) {
     var opt = {
-        filename: `${date}-StudySchedule`,
-        image: { type: 'png' },
+        filename: `${date}-StudySchedule.pdf`,
+        image: { type: 'jpeg', quality: '1' },
         pagebreak: 'avoid-all',
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
     html2pdf(document.getElementById('printPage'), opt).then((img) => {
-            img = img.toDataURL("image/png");
-            var doc = new jsPDF();
-            doc.addImage(img, 'PNG');
-            //doc.save();
-            window.open(doc.output('bloburl'), '_blank');
-        })
-        /*
-        html2pdf(document.getElementById('printPage')).then((img) => {
-            img = img.toDataURL("image/png");
-            var doc = new jsPDF();
-            doc.addImage(img, 'PNG');
-            //doc.save();
-            window.open(doc.output('bloburl'), '_blank');
-        });
-        */
+        img = img.toDataURL("image/png");
+        var doc = new jsPDF();
+        doc.addImage(img, 'PNG');
+        //doc.save();
+        //console.log(doc.output('bloburl'));
+        window.open(doc.output('bloburl'), '_blank');
+        //doc.save();
+    })
+
+    //html2pdf().set(opt).from(document.getElementById('printPage')).toPdf().save();
+    /*
+    html2pdf(document.getElementById('printPage')).then((img) => {
+        img = img.toDataURL("image/png");
+        var doc = new jsPDF();
+        doc.addImage(img, 'PNG');
+        //doc.save();
+        window.open(doc.output('bloburl'), '_blank');
+    });
+    */
 }

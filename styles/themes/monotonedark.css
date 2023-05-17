@@ -2,6 +2,7 @@
     /* caldendar values */
     --cal-day-color: #EEF4F4;
     --cal-monthtxt-color: white;
+    /*yeet*/
     --cal-date-color: #777;
     /* page values */
     --title-color: #E0DDCF;
@@ -11,151 +12,24 @@
     --link-color: #F1F0EA;
     --calculated-hover: #474448;
     --page-background: #2D232E;
-    /*does not change*/
     --disabled-background: #5E5E5E;
     --hover-text: #000;
     --error-msg: darkred;
 }
 
-body {
-    color: var(--font-color);
-    background-color: var(--page-background);
-}
-
-#cover {
-    background-color: var(--page-background);
-}
-
-#sbj-form {
-    background-color: var(--title-color);
-}
-
-.main-content {
-    background-color: var(--title-color);
-}
-
-.tut-content {
-    background-color: var(--title-color);
-}
-
-.pic-content {
-    background-color: var(--title-color);
-}
-
-hr {
-    background-color: var(--font-color);
-}
-
-.pageTitle {
-    color: var(--title-color);
-}
-
-dialog {
-    background-color: var(--top-bar-color);
-}
-
-#themebutton {
-    background-color: var(--top-bar-color);
-    color: var(--title-color);
-}
-
-#themebutton:hover {
-    background-color: var(--calculated-hover);
-    color: var(--font-color);
-}
-
-.subDiff {
-    background-color: var(--link-color);
-}
-
-.subDiff::-webkit-slider-thumb {
-    background: var(--top-bar-color);
-}
-
-#topBar {
-    background-color: var(--top-bar-color);
-}
-
-.item {
-    color: var(--link-color);
-}
-
-#test:hover {
-    background-color: var(--disabled-background);
-    color: var(--hover-text);
-}
-
-#returnDates {
-    background-color: var(--title-color);
-}
-
-.item:hover {
-    background-color: var(--title-color);
-    color: var(--hover-text);
-}
-
-.inputBox {
-    background-color: var(--link-color);
-}
-
 .cButton {
-    background-color: var(--font-color);
-    color: var(--page-background);
+    color: var(--title-color)!important;
 }
 
 .cButton:hover {
-    background-color: var(--calculated-hover);
-    color: var(--font-color);
-}
-
-#errormsg {
-    color: var(--error-msg);
-}
-
-.month {
-    background: var(--top-bar-color);
-}
-
-.month ul li {
-    color: var(--cal-monthtxt-color);
+    color: var(--link-color)!important;
 }
 
 .weekdays {
-    background-color: var(--title-color);
-}
-
-.weekdays li {
-    color: var(--top-bar-color);
-}
-
-.days {
-    background: var(--cal-day-color);
-}
-
-.days li {
-    color: var(--cal-date-color);
-}
-
-.days li .active {
-    background: var(--top-bar-color);
-    color: white !important;
+    background-color: var(--title-color)!important;
 }
 
 .days li .study {
-    background: var(--title-color);
+    background: var(--title-color)!important;
     color: var(--cal-date-color) !important;
-}
-
-
-/* Handle */
-
-::-webkit-scrollbar-thumb {
-    background: var(--top-bar-color);
-}
-
-
-/* Handle on hover */
-
- ::-webkit-scrollbar-thumb:hover {
-    background: var(--calculated-hover);
 }
