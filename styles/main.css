@@ -514,3 +514,47 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+#saveNameLabel {
+    color: var(--title-color);
+    font-size: 16px;
+}
+
+#newSaveName {
+    margin: 5px 0 5px 0;
+    padding: 3px;
+    border-radius: 3px;
+    border-width: 0;
+    max-width: 140px;
+}
+
+.saveDialogTitle {
+    color: var(--title-color);
+    margin: 10px 0 0px 0;
+    font-size: 16px;
+}
+
+.modalButton {
+    border-radius: 8px;
+    border-width: 0;
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding: 3px;
+    font-size: 16px;
+    background-color: var(--calculated-hover);
+    color: var(--title-color);
+}
+
+.modalButton:hover {
+    cursor: pointer;
+    background-color: var(--title-color);
+    color: var(--font-color);
+}
+
+#saveInput {
+    margin: 5px 0 5px 0;
+    padding: 3px;
+    border-radius: 3px;
+    border-width: 0;
+    width: 140px;
+}

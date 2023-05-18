@@ -7,6 +7,8 @@ window.onload = () => {
     const closeButton = document.querySelector('[data-close-modal]');
     const modal = document.querySelector('[data-modal]');
     const themeVal = document.querySelector('[data-theme]');
+    const saveButton = document.getElementById('savebutton');
+    const saveModal = document.querySelector('[save-modal]');
     document.getElementById('hm').classList.add('selected');
 
 
