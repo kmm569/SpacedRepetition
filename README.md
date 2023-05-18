@@ -45,3 +45,51 @@ At the bottom of the page, you can also export these dates to your calendar, or 
 Discord: @kaitlynmm569#9959  
 Email: [kmusial@gothamstudios.us](mailto:kmusial@gothamstudios.us)  
 [Feedback/Bug Report Form](https://forms.gle/MyAPgKtZB2zRC6aFA)
+# Changelog
+### 0.8.0 - 5/18/23
+- Added new save + load system
+- Fixed partial save system
+### 0.7.2 - 5/17/23
+- Added link bar to page footer
+- Added footer to every page
+- Added "Feedback/Bug Report" button to the bottom of the Guide page
+- Small tweaks to the Theme button in preparation for a save system
+- Reworked CSS files
+### v0.7.1 - 5/16/23
+- Export bug fixes
+- Error message updates
+### v0.7.0 - 5/16/23
+- Cosmetic updates
+- Removed "Test Scheduler" from top bar
+- Added version number to page footer
+- Export Plan button now works
+- Added error message when trying to generate schedule less than 3 days until a test
+- Added partial save system so that the page does not clear upon refresh
+### v0.6.0 - 5/15/23
+- Added "Guide" page
+- Reworked theme popup
+- Added donation button
+- Added copyright footer
+- Cosmetic updates
+- Topic table broken
+- Added "Export Plan" button (no function)
+### v0.5.0 - 5/1/23
+- Reworked topic date input
+- Custom formatting for difficulty slider
+- Fixed calendar formatting for mobile devices
+### v0.4.0 - 4/28/23
+- Save system removed
+- "Same year"  button added
+- Cosmetic updates
+- Added "Theme" button + 2 new themes
+### v0.3.0 - 4/20/23
+- First save system added
+- Error messages updated
+### v0.2.1 - 4/19/23
+- Code optimization
+### v0.2.0 - 4/19/23
+- Cosmetic updates
+- "Add to calendar" function added
+### v0.1.0 - 4/12/23
+- First website release
+- Calculate study days based on test date, topic dates, and topic difficulties.
