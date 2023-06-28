@@ -46,6 +46,11 @@ Discord: @kaitlynmm569#9959
 Email: [kmusial@gothamstudios.us](mailto:kmusial@gothamstudios.us)  
 [Feedback/Bug Report Form](https://forms.gle/MyAPgKtZB2zRC6aFA)
 # Changelog
+### 0.8.1 - 6/27/23
+- More compadable mobile interface
+- Calculation fixes
+- Code optimization
+- Formatting changes
 ### 0.8.0 - 5/18/23
 - Added new save + load system
 - Fixed partial save system
