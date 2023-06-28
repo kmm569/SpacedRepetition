@@ -423,12 +423,6 @@ sup {
     }
 }
 
-@media screen and (max-width:651px) {
-    #topLeftButtons {
-        display: none;
-    }
-}
-
 @media screen and (max-width:528px) {
     #themebutton {
         display: none;
@@ -453,23 +447,6 @@ sup {
     }
     .subYearVal {
         width: 40px;
-    }
-    .pageTitle {
-        font-size: 18px;
-    }
-    #topBar {
-        width: auto;
-    }
-    #sbj-form {
-        width: auto;
-        margin: 0 auto;
-    }
-    /* #mainBody {
-        width: 100%;
-    } */
-    .inputBox {
-        font-size: 12px;
-        padding: 0;
     }
 }
 

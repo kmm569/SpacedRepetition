@@ -8,7 +8,7 @@ h2 {
 }
 
 .main-content {
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     padding: 10px;
     border-radius: 10px;
@@ -34,7 +34,7 @@ h2 {
 }
 
 .tut-content {
-    width: 50%;
+    width: 60%;
     margin: 15px auto;
     padding: 10px;
     border-radius: 10px;
@@ -55,7 +55,7 @@ h2 {
 }
 
 .pic-content {
-    width: 50%;
+    width: 60%;
     margin: 15px auto;
     padding: 10px;
     border-radius: 10px;
@@ -82,4 +82,48 @@ h2 {
 #coffeebutton {
     margin: 0 auto;
     text-align: center;
+}
+
+@media screen and (max-width:540px) {
+    .main-content {
+        width: 80%;
+    }
+    .main-content>ul {
+        width: 100%;
+        /* list-style: none; */
+        padding: 0;
+        list-style-position: inside;
+        line-height: 20px;
+    }
+    .tut-content {
+        width: 80%;
+    }
+    .pic-content {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .main-content {
+        width: 80%;
+    }
+    .main-content>ul {
+        width: 100%;
+        /* list-style: none; */
+        padding: 0;
+        list-style-position: inside;
+        line-height: 20px;
+    }
+    .tut-content {
+        width: 80%;
+    }
+    .tut-content>ol {
+        padding: 0;
+    }
+    .pic-content {
+        width: 80%;
+    }
+    .pic-content>ol {
+        padding: 0;
+    }
 }
