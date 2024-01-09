@@ -6,6 +6,7 @@
     --cal-date-color: #777;
     /* page values */
     --title-color: #5caace;
+    --text-color: #000;
     --top-bar-color: #00527D;
     /*--font-color: #2f2f97;*/
     --font-color: var(--top-bar-color);
