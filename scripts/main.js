@@ -182,12 +182,12 @@ const updateRows = (newRowCount) => {
 };
 
 function addRow() {
-    const rowCount = subTable.rows.length;
-    const row = subTable.insertRow(rowCount);
-    let yrVal;
+  const rowCount = subTable.rows.length;
+  const row = subTable.insertRow(rowCount);
+  let yrVal;
 
-    if (chosen == 1 && testDate.value) {
-        yrVal = `value="${new Date(`${testDate.value}T00:00`).getFullYear()}"`;
+  if (chosen == 1 && testDate.value) {
+    yrVal = `value="${new Date(`${testDate.value}T00:00`).getFullYear()}"`;
   } else {
     yrVal = "";
   }
@@ -202,16 +202,30 @@ function addRow() {
     const newCell = row.insertCell(i);
     newCell.innerHTML = cellContent;
   });
-  document
-    .getElementById(`sub${rowCount}Picker`)
-    .addEventListener("change", () => {
-      let dateVals = document.getElementById(`sub${rowCount}Picker`).value;
-      dateVals = dateVals.split("-");
-      document.getElementById(`sub${rowCount}Month`).value = dateVals[1];
-      document.getElementById(`sub${rowCount}Day`).value = dateVals[2];
-      document.getElementById(`sub${rowCount}Year`).value = dateVals[0];
-    });
+
+  // Add event listener for date picker changes
+  document.getElementById(`sub${rowCount}Picker`).addEventListener("change", () => {
+    let dateVals = document.getElementById(`sub${rowCount}Picker`).value;
+    dateVals = dateVals.split("-");
+    document.getElementById(`sub${rowCount}Month`).value = dateVals[1];
+    document.getElementById(`sub${rowCount}Day`).value = dateVals[2];
+    document.getElementById(`sub${rowCount}Year`).value = dateVals[0];
+  });
+
+  // Add event listener for slider input changes
+  const subDiffSliders = document.getElementsByClassName('subDiff');
+  const subDiffSlider = subDiffSliders[rowCount - 1]; // Assuming there's only one slider per row
+
+  subDiffSlider.addEventListener('input', () => {
+    const value = (subDiffSlider.value - subDiffSlider.min) / (subDiffSlider.max - subDiffSlider.min);
+    const percentage = value * 100;
+
+    // Set the dynamic linear gradient background
+    subDiffSlider.style.background = `linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) ${percentage}%, rgb(0, 0, 0) ${percentage}%, rgb(0, 0, 0) 100%)`;
+
+  });
 }
+
 
 function deleteRow() {
   try {
