@@ -25,10 +25,34 @@
   Study Tool Quiz:
     ✔ Design Quiz Page @started(23-06-28 11:06) @done(23-06-28 12:09) @lasted(1h3m2s)
     ✘ Set up in React.js? @cancelled(23-06-28 11:24)
-    ☐ Write JSON file for questions and point values @started(23-06-28 12:09)
-    ☐ Write JSON file for study tool associations
+    ✔ Write JSON file for questions and point values @started(23-06-28 12:09) @done(23-06-28 15:49) @lasted(3h40m19s)
+    ✔ Write JSON file for study tool associations @started(23-06-28 12:13) @done(23-06-28 15:49) @lasted(3h36m21s)
     ☐ Calculate association values
     ☐ Organize question and study tool relations
+    ☐ Write repeatable function to be used for each question
+  Redesign Print Page:
+    ☐ Better theme
+    ☐ Fix formatting
+    ☐ Make it pretty
+
+6/29/2023:
+  Study Tool Quiz:
+    ✔ Write JSON file for questions and point values pt2 @started(23-06-29 08:35) @done(23-06-29 15:34) @lasted(6h59m38s)
+    ✔ Write JSON file for study tool associations pt2 @started(23-06-29 08:50) @done(23-06-29 15:34) @lasted(6h44m40s)
+    ☐ Calculate association values
+    ☐ Organize question and study tool relations
+    ☐ Write repeatable function to be used for each question
+  Redesign Print Page:
+    ☐ Better theme
+    ☐ Fix formatting
+    ☐ Make it pretty
+
+6/30/2023:
+  Study Tool Quiz:
+    ✔ Write JSON file for questions and point values pt3 @started(23-06-30 08:53) @done(23-06-30 12:36) @lasted(3h43m)
+    ✔ Write JSON file for study tool associations pt3 @started(23-06-30 08:53) @done(23-06-30 12:35) @lasted(3h42m59s)
+    ✔ Calculate association values @started(23-06-30 08:53) @done(23-06-30 13:42) @lasted(4h49m21s)
+    ✔ Organize question and study tool relations @started(23-06-30 12:36) @done(23-06-30 15:49) @lasted(3h13m17s)
     ☐ Write repeatable function to be used for each question
   Redesign Print Page:
     ☐ Better theme

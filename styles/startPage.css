@@ -10,8 +10,8 @@ h2 {
 .main-content {
     width: 60%;
     margin: 0 auto;
-    padding: 30px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 10px;
     align-content: center;
     text-align: center;
     background-color: var(--title-color);
@@ -36,8 +36,8 @@ h2 {
 .tut-content {
     width: 60%;
     margin: 15px auto;
-    padding: 30px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 10px;
     align-content: center;
     text-align: left;
     background-color: var(--title-color);
@@ -57,8 +57,8 @@ h2 {
 .pic-content {
     width: 60%;
     margin: 15px auto;
-    padding: 30px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 10px;
     align-content: center;
     text-align: left;
     background-color: var(--title-color);

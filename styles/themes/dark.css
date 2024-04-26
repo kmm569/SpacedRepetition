@@ -1,18 +1,18 @@
 :root {
-  /* Calendar values */
-  --cal-weekday-color: #8da6c0;
-  --cal-day-color: #d7e4f0; /* Adjusted for a darker background */
-  --cal-monthtxt-color: white;
-  --cal-date-color: #5e738f; /* Adjusted for better contrast */
-
-  /* Page values */
-  --title-color: #657f9a;
-  --top-bar-color: #29346d;
-  --font-color: #d7e4f0; /* Adjusted for better readability */
-  --link-color: #ffffff; /* Lighter blue for links */
-  --disabled-background: #5e5e5e;
-  --hover-text: #000;
-  --calculated-hover: #022847;
-  --page-background: #000910;
-  --error-msg: darkred;
+    /* caldendar values */
+    --cal-weekday-color: #8DA6C0;
+    --cal-day-color: #EEF4F4;
+    --cal-monthtxt-color: white;
+    --cal-date-color: #777;
+    /* page values */
+    --title-color: #b9cce0;
+    --top-bar-color: #165384;
+    /*--font-color: #7799BB;*/
+    --font-color: var(--top-bar-color);
+    --link-color: #D7E4F0;
+    --disabled-background: #5E5E5E;
+    --hover-text: #000;
+    --calculated-hover: #022847;
+    --page-background: #011627;
+    --error-msg: darkred;
 }

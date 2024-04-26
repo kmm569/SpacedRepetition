@@ -10,7 +10,7 @@
 
 const stylesheet = document.getElementById("themeStyle");
 let themeStore = localStorage.getItem("theme");
-stylesheet.href = `./styles/themes/${themeStore ? themeStore : "dark"}.css`;
+stylesheet.href = `./styles/themes/${themeStore ? themeStore : "dutchess"}.css`;
 
 const testDate = document.getElementById("dot");
 const subjects = document.getElementById("numSub");
@@ -182,12 +182,12 @@ const updateRows = (newRowCount) => {
 };
 
 function addRow() {
-  const rowCount = subTable.rows.length;
-  const row = subTable.insertRow(rowCount);
-  let yrVal;
+    const rowCount = subTable.rows.length;
+    const row = subTable.insertRow(rowCount);
+    let yrVal;
 
-  if (chosen == 1 && testDate.value) {
-    yrVal = `value="${new Date(`${testDate.value}T00:00`).getFullYear()}"`;
+    if (chosen == 1 && testDate.value) {
+        yrVal = `value="${new Date(`${testDate.value}T00:00`).getFullYear()}"`;
   } else {
     yrVal = "";
   }
@@ -202,30 +202,16 @@ function addRow() {
     const newCell = row.insertCell(i);
     newCell.innerHTML = cellContent;
   });
-
-  // Add event listener for date picker changes
-  document.getElementById(`sub${rowCount}Picker`).addEventListener("change", () => {
-    let dateVals = document.getElementById(`sub${rowCount}Picker`).value;
-    dateVals = dateVals.split("-");
-    document.getElementById(`sub${rowCount}Month`).value = dateVals[1];
-    document.getElementById(`sub${rowCount}Day`).value = dateVals[2];
-    document.getElementById(`sub${rowCount}Year`).value = dateVals[0];
-  });
-
-  // Add event listener for slider input changes
-  const subDiffSliders = document.getElementsByClassName('subDiff');
-  const subDiffSlider = subDiffSliders[rowCount - 1]; // Assuming there's only one slider per row
-
-  subDiffSlider.addEventListener('input', () => {
-    const value = (subDiffSlider.value - subDiffSlider.min) / (subDiffSlider.max - subDiffSlider.min);
-    const percentage = value * 100;
-
-    // Set the dynamic linear gradient background
-    subDiffSlider.style.background = `linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) ${percentage}%, rgb(0, 0, 0) ${percentage}%, rgb(0, 0, 0) 100%)`;
-
-  });
+  document
+    .getElementById(`sub${rowCount}Picker`)
+    .addEventListener("change", () => {
+      let dateVals = document.getElementById(`sub${rowCount}Picker`).value;
+      dateVals = dateVals.split("-");
+      document.getElementById(`sub${rowCount}Month`).value = dateVals[1];
+      document.getElementById(`sub${rowCount}Day`).value = dateVals[2];
+      document.getElementById(`sub${rowCount}Year`).value = dateVals[0];
+    });
 }
-
 
 function deleteRow() {
   try {
@@ -242,7 +228,7 @@ function getMonthYear(dateValue) {
 }
 
 function calcRep() {
-  const mult = [2.175, 2, 1.825, 1.625, 1.45];
+  const mult = [2.175, 2, 1.825, 1.625, 1.45]; // Power values for repetition calculation
   const months = [
     "January",
     "February",
@@ -258,7 +244,7 @@ function calcRep() {
     "December",
   ];
 
-  const topicNames = document.getElementsByClassName("subNames");
+  const topicNames = document.getElementsByClassName("subNames"); // "Topic Name" List
   //const topicDates = document.getElementsByClassName("subDates");
 
   let topicDates = [];
@@ -268,7 +254,7 @@ function calcRep() {
 
   if (testDate.value == "") {
     document.getElementById("errormsg").innerHTML =
-      "Please enter the test date before continuing!<br><br>";
+      "Please enter the test date before continuing!<br><br>"; // Sets the error message if there is no test date
     return false;
   }
 

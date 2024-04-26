@@ -1,664 +1,583 @@
 :root {
-  --cal-width: 45%;
+    --cal-width: 45%;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 0;
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  color: var(--font-color);
-  background-color: var(--page-background);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--font-color);
+    background-color: var(--page-background);
 }
 
 hr {
-  height: 2px;
-  border: none;
-  background-color: var(--font-color);
+    height: 2px;
+    border: none;
+    background-color: var(--font-color);
 }
 
 #mainBody {
-  text-align: center;
-  margin: auto;
+    text-align: center;
 }
 
 .pageTitle {
-  font-size: 20px;
-  color: var(--text-color);
+    font-size: 20px;
+    color: var(--title-color);
 }
 
 #topBar {
-  --border-radius: 10px;
-  margin: 0 auto 10px;
-  text-align: center;
-  padding: 10px 50px;
-  line-height: 40px;
-  width: fit-content;
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  background-color: var(--top-bar-color);
+    --border-radius: 10px;
+    margin: 0 auto 10px;
+    text-align: center;
+    padding: 10px 50px;
+    line-height: 28px;
+    width: fit-content;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    background-color: var(--top-bar-color);
 }
 
 #carryYear {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--link-color);
-  border-radius: 4px;
-  outline: none;
-  transition: background-color 0.3s, border-color 0.3s;
-  cursor: pointer;
-}
-
-#carryYear:checked {
-  background-color: var(--top-bar-color);
-  border-color: var(--link-color);
-}
-
-#carryYear::before {
-  content: "\2713"; /* Unicode checkmark character */
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  line-height: 18px; /* Adjust as needed */
-  color: #fff;
-  font-size: 14px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-#carryYear:checked::before {
-  opacity: 1;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0;
 }
 
 .item {
-  text-decoration: none;
-  padding: 3px;
-  font-size: 16px;
-  transition: color 0.25s ease-out;
-  color: var(--link-color);
+    text-decoration: none;
+    padding: 3px;
+    font-size: 16px;
+    transition: color 0.25s ease-out;
+    color: var(--link-color);
 }
 
 #test:hover {
-  border-radius: 5px;
-  cursor: not-allowed;
-  background-color: var(--disabled-background);
-  color: var(--hover-text);
+    border-radius: 5px;
+    cursor: not-allowed;
+    background-color: var(--disabled-background);
+    color: var(--hover-text);
 }
 
 .selected {
-  font-weight: bold;
+    text-decoration: underline;
 }
 
 .item:hover {
-  border-radius: 5px;
-  cursor: pointer;
-  color: var(--hover-text);
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--title-color);
+    color: var(--hover-text);
 }
 
 .section {
-  line-height: 25px;
+    line-height: 25px;
 }
 
 .inputLabel {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 #blackout {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 98;
-  background-color: rgb(0, 0, 0, 0.75);
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 98;
+    background-color: rgb(0, 0, 0, 0.75);
 }
 
 #themepopup {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 dialog {
-  padding: 30px 50px;
-  border-radius: 10px;
-  text-align: center;
-  width: fit-content;
-  height: fit-content;
-  background-color: var(--top-bar-color);
+    padding: 30px 50px;
+    border-radius: 10px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--top-bar-color);
 }
 
 dialog::backdrop {
-  background-color: hsl(255, 0%, 0%, 0.5);
+    background-color: hsl(255, 0%, 0%, 0.5);
 }
 
 #themeChoice {
-  border-radius: 8px;
-  border-width: 0;
-  margin-top: 12px;
-  margin-bottom: 0;
-  padding: 3px;
-  font-size: 16px;
-  background-color: var(--calculated-hover);
-  color: var(--title-color);
+    border-radius: 8px;
+    border-width: 0;
+    margin-top: 12px;
+    margin-bottom: 0;
+    padding: 3px;
+    font-size: 16px;
+    background-color: var(--calculated-hover);
+    color: var(--title-color);
 }
 
 #themeChoice:hover {
-  cursor: pointer;
-  background-color: var(--title-color);
-  color: var(--font-color);
+    cursor: pointer;
+    background-color: var(--title-color);
+    color: var(--font-color);
 }
 
 .darkButton {
-  border-radius: 8px;
-  border: 0;
-  background-color: var(--top-bar-color);
-  color: var(--title-color);
+    border-radius: 8px;
+    border: 0;
+    background-color: var(--top-bar-color);
+    color: var(--title-color);
 }
 
 .topLeft {
-  margin: 10px 0 0 10px;
-  padding: 5px 8px;
+    margin: 10px 0 0 10px;
+    padding: 5px 8px;
 }
 
 #topLeftButtons {
-  display: inline-block;
-  position: absolute;
+    display: inline-block;
+    position: absolute;
 }
 
 #themeTitle {
-  padding: 3px;
-  line-height: 30px;
+    padding: 3px;
+    line-height: 30px;
 }
 
 .calPicker {
-  width: 18px !important;
-  height: 16px !important;
-  background-color: rgb(0, 0, 0, 0) !important;
-  border-radius: 5px !important;
-  border: 0 !important;
-  padding: 0px !important;
-  text-align: center !important;
+    width: 18px;
+    height: 16px;
+    background-color: rgb(0, 0, 0, 0);
+    border-radius: 5px;
+    border: 0;
+    padding: 0px;
+    text-align: center;
 }
 
 .calPicker::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+    filter: invert(1);
 }
 
 .inputBox {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.newDateBoxes {
-  display: flex;
-}
-
-/* Focus styles */
-.inputBox:focus {
-  outline: none;
-  border-color: #5a9dd5;
-  box-shadow: 0 0 5px rgba(90, 157, 213, 0.5);
-}
-
-.inputBox[type="number"] {
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-/* Focus styles for number input */
-.inputBox[type="number"]:focus {
-  outline: none;
-  border-color: #5a9dd5;
-  box-shadow: 0 0 5px rgba(90, 157, 213, 0.5);
+    border-radius: 5px;
+    border: 0;
+    padding: 3px;
+    text-align: center;
+    margin-top: 3px;
+    background-color: var(--link-color);
 }
 
 #numSub {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 table {
-  margin: 0 auto;
-  padding: 0;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .submittedTemp {
-  display: none;
+    display: none;
 }
 
 .cButton {
-  border-radius: 8px;
-  border-width: 0;
-  padding: 10px 22px;
-  font-size: 16px;
-  display: none;
-  background-color: var(--font-color);
-  color: var(--page-background);
+    border-radius: 8px;
+    border-width: 0;
+    padding: 5px;
+    font-size: 16px;
+    display: none;
+    background-color: var(--font-color);
+    color: var(--page-background);
 }
 
 .section:has .cButton {
-  padding-top: 0;
+    padding-top: 0;
 }
 
 #sbj-form {
-  margin: 0 auto;
-  width: fit-content;
-  padding: 15px 20px;
-  border-radius: 10px;
-  background-color: var(--title-color);
+    margin: 0 auto;
+    width: fit-content;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: var(--title-color);
 }
 
 .cButton:hover {
-  cursor: pointer;
-  background-color: var(--calculated-hover);
-  color: var(--font-color);
+    cursor: pointer;
+    background-color: var(--calculated-hover);
+    color: var(--font-color);
 }
 
 #goback {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .subDiff {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 8px;
-  border-radius: 5px;
-  outline: none;
-  background: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(0, 0, 0) 0%);
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    background-color: var(--link-color);
 }
 
 .subDiff::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px; /* Set the width of the slider thumb */
-  height: 18px; /* Set the height of the slider thumb */
-  border-radius: 50%;
-  background-color: #000; /* Set the default color of the slider thumb */
-  cursor: pointer;
-  margin-top: -4px; /* Center the thumb vertically */
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: var(--top-bar-color);
 }
 
-
-
 #subject-section {
-  display: none;
+    display: none;
 }
 
 .table-head {
-  text-align: center;
-  width: 150px;
-  padding: 3px;
-  margin: 0 auto;
+    text-align: center;
+    width: 120px;
+    padding: 3px;
+    margin: 0 auto;
 }
 
 .subNames,
 .subDates,
 .subDiff {
-  width: 115px;
+    width: 115px;
 }
 
 .indvDate {
-  width: 18px;
-  height: 16px;
-  margin: 1px;
+    width: 18px;
+    height: 16px;
+    margin: 1px;
 }
 
 .subYearVal {
-  width: 40px;
+    width: 40px;
 }
 
 #yearCheck {
-  font-size: 18px;
+    font-size: 15px;
 }
 
 sup {
-  font-size: 9px;
-  font-weight: bold;
-  cursor: pointer;
+    font-size: 9px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 #study-dates {
-  width: fit-content;
-  margin: 0 auto;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 #returnDates {
-  width: 60%;
-  margin: 5px auto;
-  padding: 8px 3%;
-  border-radius: 10px;
-  background-color: var(--title-color);
+    width: fit-content;
+    margin: 5px auto;
+    padding: 8px 3%;
+    border-radius: 10px;
+    background-color: var(--title-color);
 }
 
 .dateList {
-  text-align: left;
+    text-align: left;
 }
+
 
 /* CALENDAR CSS */
 
 #calendar {
-  width: 90%;
-  margin: 0 auto;
+    width: 80%;
+    margin: 0 auto;
 }
 
-
 .single-cal {
-  display: inline-block;
-  width: 80%;
-  vertical-align: top;
-  padding: 5px;
-  overflow: hidden;
-  border-radius: 30px;
+    display: inline-block;
+    width: var(--cal-width);
+    vertical-align: top;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 50px;
 }
 
 .month {
-  padding: 30px 0;
-  width: 100%;
-  text-align: center;
-  background: var(--top-bar-color);
+    padding: 30px 0;
+    width: 100%;
+    text-align: center;
+    background: var(--top-bar-color);
 }
 
 .monTitle {
-  font-style: italic;
-  font-size: 18px;
+    font-style: italic;
+    font-size: 18px;
 }
 
 .month ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .month ul li {
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: var(--cal-monthtxt-color);
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--cal-monthtxt-color);
 }
 
 .weekdays {
-  width: 100%;
-  margin: 0;
-  padding: 10px 0;
-  background-color: var(--cal-weekday-color);
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    background-color: var(--cal-weekday-color);
 }
 
 .weekdays li {
-  display: inline-block;
-  width: 13.6%;
-  text-align: center;
-  color: var(--top-bar-color);
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    color: var(--top-bar-color);
 }
 
 .days {
-  width: 100%;
-  padding: 10px 0;
-  margin: 0;
-  background: var(--cal-day-color);
+    width: 100%;
+    padding: 10px 0;
+    margin: 0;
+    background: var(--cal-day-color);
 }
 
 .days li {
-  list-style-type: none;
-  display: inline-block;
-  width: 13.6%;
-  text-align: center;
-  margin-bottom: 5px;
-  font-size: 12px;
-  color: var(--cal-date-color);
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: var(--cal-date-color);
 }
 
 .days li .active {
-  padding: 3px;
-  border-radius: 5px;
-  background: var(--top-bar-color);
-  color: white !important;
+    padding: 3px;
+    border-radius: 5px;
+    background: var(--top-bar-color);
+    color: white !important;
 }
 
 .days li .study {
-  padding: 3px;
-  border-radius: 5px;
-  background: var(--cal-weekday-color);
-  color: white;
+    padding: 3px;
+    border-radius: 5px;
+    background: var(--cal-weekday-color);
+    color: white;
 }
 
 #calendar-links {
-  width: fit-content;
-  margin: 0 auto;
-  margin-top: 0;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 0;
 }
+
 
 /* width */
 
 ::-webkit-scrollbar {
-  width: 12px;
+    width: 12px;
 }
+
 
 /* Track */
 
-::-webkit-scrollbar-track {
-  background: rgb(0, 0, 0, 0);
+ ::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0, 0);
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 30px;
-  background: var(--top-bar-color);
+    border-radius: 30px;
+    background: var(--top-bar-color);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--calculated-hover);
+    background: var(--calculated-hover);
 }
+
 
 /* Media queries for smaller screens */
 
-@media screen and (max-width: 720px) {
-  .weekdays li,
-  .days li {
-    width: 13.1%;
-  }
-  .single-cal {
-    width: 80%;
-    margin: 0;
-  }
+@media screen and (max-width:720px) {
+    .weekdays li,
+    .days li {
+        width: 13.1%;
+    }
+    .single-cal {
+        width: 80%;
+        margin: 0;
+    }
 }
 
-@media screen and (max-width: 651px) {
-  #topLeftButtons {
-    display: none;
-  }
+@media screen and (max-width:651px) {
+    #topLeftButtons {
+        display: none;
+    }
 }
 
-@media screen and (max-width: 528px) {
-  #themebutton {
-    display: none;
-  }
+@media screen and (max-width:528px) {
+    #themebutton {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 420px) {
-  .weekdays li,
-  .days li {
-    width: 12.5%;
-  }
-  .days li .active {
-    padding: 2px;
-  }
-  .subNames,
-  .subDates,
-  .subDiff {
-    width: 60px;
-  }
-  .indvDate {
-    width: 10px;
-  }
-  .subYearVal {
-    width: 40px;
-  }
-  .pageTitle {
-    font-size: 18px;
-  }
-  #topBar {
-    width: auto;
-  }
-  #sbj-form {
-    width: 80%;
-    margin: 0 auto;
-  }
-  /* #mainBody {
+    .weekdays li,
+    .days li {
+        width: 12.5%;
+    }
+    .days li .active {
+        padding: 2px;
+    }
+    .subNames,
+    .subDates,
+    .subDiff {
+        width: 100px;
+    }
+    .indvDate {
+        width: 17px;
+    }
+    .subYearVal {
+        width: 40px;
+    }
+    .pageTitle {
+        font-size: 18px;
+    }
+    #topBar {
+        width: auto;
+    }
+    #sbj-form {
+        width: auto;
+        margin: 0 auto;
+    }
+    /* #mainBody {
         width: 100%;
     } */
-  .inputBox {
-    padding: 0;
-  }
+    .inputBox {
+        font-size: 12px;
+        padding: 0;
+    }
 }
 
 @media screen and (max-width: 290px) {
-  .weekdays li,
-  .days li {
-    width: 12.2%;
-  }
+    .weekdays li,
+    .days li {
+        width: 12.2%;
+    }
 }
 
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-/* Media query for smaller screens (mobile) */
-@media only screen and (max-width: 600px) {
-  /* Stack td elements vertically on smaller screens */
-  td {
-    width: 100%; /* Ensure each td takes full width on smaller screens */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
-    margin-bottom: 8px; /* Add some space between stacked td elements */
-  }
-}
 
 /* Chrome, Safari, Edge, Opera */
 
 .indvDate::-webkit-outer-spin-button,
 .indvDate::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
+
 
 /* Firefox */
 
-.indvDate[type="number"] {
-  -moz-appearance: textfield;
-  appearance: textfield;
+.indvDate[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 footer {
-  margin-top: auto;
+    margin-top: auto;
 }
 
-.bottomlinks > ul > li {
-  display: inline-block;
-  text-decoration: none;
-  list-style: none;
+.bottomlinks>ul>li {
+    display: inline-block;
+    text-decoration: none;
+    list-style: none;
 }
 
-.bottomlinks > ul > li > a:hover {
-  color: var(--title-color);
+.bottomlinks>ul>li>a:hover {
+    color: var(--title-color);
 }
 
-.bottomlinks > ul > li > a {
-  text-decoration: none;
-  color: var(--font-color);
+.bottomlinks>ul>li>a {
+    text-decoration: none;
+    color: var(--font-color);
 }
 
 #errormsg {
-  color: var(--error-msg);
+    color: var(--error-msg);
 }
 
 #feedbackButton {
-  text-align: center;
-  margin: 0 auto 15px auto;
-  padding: 5px 8px;
-  width: fit-content;
+    text-align: center;
+    margin: 0 auto 15px auto;
+    padding: 5px 8px;
+    width: fit-content;
 }
 
 .darkButton:hover {
-  background-color: var(--calculated-hover);
-  color: var(--link-color);
-  cursor: pointer;
+    background-color: var(--calculated-hover);
+    color: var(--link-color);
+    cursor: pointer;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 #saveNameLabel {
-  color: var(--title-color);
-  font-size: 16px;
+    color: var(--title-color);
+    font-size: 16px;
 }
 
 #newSaveName {
-  margin: 5px 0 5px 0;
-  padding: 3px;
-  border-radius: 3px;
-  border-width: 0;
-  max-width: 140px;
+    margin: 5px 0 5px 0;
+    padding: 3px;
+    border-radius: 3px;
+    border-width: 0;
+    max-width: 140px;
 }
 
 .saveDialogTitle {
-  color: var(--title-color);
-  margin: 10px 0 0px 0;
-  font-size: 16px;
+    color: var(--title-color);
+    margin: 10px 0 0px 0;
+    font-size: 16px;
 }
 
 .modalButton {
-  border-radius: 8px;
-  border-width: 0;
-  margin-top: 5px;
-  margin-bottom: 0;
-  padding: 3px;
-  font-size: 16px;
-  background-color: var(--calculated-hover);
-  color: var(--title-color);
+    border-radius: 8px;
+    border-width: 0;
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding: 3px;
+    font-size: 16px;
+    background-color: var(--calculated-hover);
+    color: var(--title-color);
 }
 
 .modalButton:hover {
-  cursor: pointer;
-  background-color: var(--title-color);
-  color: var(--font-color);
+    cursor: pointer;
+    background-color: var(--title-color);
+    color: var(--font-color);
 }
 
 #saveInput {
-  margin: 5px 0 5px 0;
-  padding: 3px;
-  border-radius: 3px;
-  border-width: 0;
-  width: 140px;
-}
-
-input[type="date"] {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-/* Focus styles */
-input[type="date"]:focus {
-  outline: none;
-  border-color: #5a9dd5;
-  box-shadow: 0 0 5px rgba(90, 157, 213, 0.5);
+    margin: 5px 0 5px 0;
+    padding: 3px;
+    border-radius: 3px;
+    border-width: 0;
+    width: 140px;
 }

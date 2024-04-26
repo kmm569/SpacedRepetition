@@ -1,222 +1,160 @@
-body {
-  margin: 0;
-  overflow: hidden;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-#top {
-  padding: 15px;
-  text-align: center;
-  color: var(--title-color);
-}
-
-.background {
-  margin: auto;
-  width: max-content;
-  padding: 35px;
-  border-radius: 10px;
-  text-align: center;
-  background-color: var(--title-color);
-}
-
-.centerContent {
-  margin: auto;
-}
-
-#pageFoot {
-  position: absolute;
-  bottom: 0px;
-  margin: 0;
-  padding: 0;
-  right: 0;
-  color: rgba(0, 0, 0, 0.25);
-}
-
-#downloaded {
-  margin: auto;
-  z-index: 100;
-}
-.animation {
-  margin-top: 20px;
-  animation: heartbeat 1.5s infinite;
-}
-
-.heart {
-  width: 50px;
-  height: 50px;
-  background-color: #e74c3c;
-  transform: rotate(-45deg);
-  position: relative;
-  animation: heart-blink 1s infinite;
-}
-
-.heart::before,
-.heart::after {
-  content: "";
-  width: 50px;
-  height: 50px;
-  background-color: #e74c3c;
-  border-radius: 50%;
-  position: absolute;
-}
-
-.heart::before {
-  top: -25px;
-  left: 0;
-}
-
-.heart::after {
-  top: 0;
-  left: 25px;
-}
-
-@keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes heart-blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.page {
-  display: block;
-  page-break-after: always;
-  position: relative;
-  width: 8.5in;
-  height: 11in;
-  margin: 0;
-  z-index: 1;
-  color: black !important;
-}
-
-.page-content {
-  position: absolute;
-  width: 7.5in;
-  height: 10in;
-  background-color: rgb(255, 255, 255);
-  padding: 0.5in;
-  margin: 0;
-}
-
-.page-content h1 {
-  text-align: center;
-}
-
-.page-content p {
-  text-align: center;
-  font-size: 18px;
-  width: 70%;
-  margin: 0 auto;
-}
-
-.gens {
-  text-align: center;
-}
-
-#testDate {
-  font-size: 20px;
-}
-
-#genDate {
-  font-size: 18px;
-}
-
-.indivMonth > ul {
-  list-style: none;
-  line-height: 120%;
-  font-size: 18px;
-  text-align: left;
-  /*background-color: beige;*/
-}
-
-#months {
-  margin: 15px 0 auto;
-  text-align: center;
-  columns: 2;
-  /*
+    body {
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #top {
+        padding: 15px;
+        text-align: center;
+        color: var(--title-color);
+    }
+    
+    .background {
+        margin: 0 auto;
+        width: max-content;
+        padding: 35px;
+        border-radius: 10px;
+        text-align: center;
+        background-color: var(--title-color);
+    }
+    
+    #pageFoot {
+        position: absolute;
+        bottom: 0px;
+        margin: 0;
+        padding: 0;
+        right: 0;
+        color: rgba(0, 0, 0, 0.25)
+    }
+    
+    #downloaded {
+        z-index: 100;
+    }
+    
+    .page {
+        page-break-after: always;
+        position: relative;
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        z-index: 1;
+        color: black!important;
+    }
+    
+    .page-content {
+        position: absolute;
+        width: 7.5in;
+        height: 10in;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: .5in;
+        margin: 0;
+    }
+    
+    .page-content h1 {
+        text-align: center;
+    }
+    
+    .page-content p {
+        text-align: center;
+        font-size: 18px;
+        width: 70%;
+        margin: 0 auto;
+    }
+    
+    .gens {
+        text-align: center;
+    }
+    
+    #testDate {
+        font-size: 20px;
+    }
+    
+    #genDate {
+        font-size: 18px;
+    }
+    
+    .indivMonth>ul {
+        list-style: none;
+        line-height: 120%;
+        font-size: 18px;
+        text-align: left;
+        /*background-color: beige;*/
+    }
+    
+    #months {
+        margin: 15px 0 auto;
+        text-align: center;
+        columns: 2;
+        /*
         column-gap: 0;
         column-width: 100px;
         column-rule: 5px solid;
         */
-  column-fill: auto;
-  height: 70%;
-  /*background-color: brown;*/
-  padding-top: 10px;
-}
-
-.indivMonth {
-  /*background-color: teal;*/
-  width: max-content;
-  margin: 0 auto;
-}
-
-.indivMonth > h3 {
-  margin: 0;
-  text-align: left;
-}
-
-#cover {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 99;
-  background-color: var(--page-background);
-}
-
-#themebutton {
-  display: inline-block;
-  margin: 5px;
-  padding: 12px 22px;
-  border-radius: 8px;
-  border: 0;
-  background-color: var(--top-bar-color);
-  color: var(--link-color);
-}
-
-#themebutton:hover {
-  background-color: var(--calculated-hover);
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-#mainFoot {
-  margin-top: auto;
-}
-
-.bottomlinks > ul > li {
-  display: inline-block;
-  text-decoration: none;
-  list-style: none;
-}
-
-.bottomlinks > ul > li > a:hover {
-  color: var(--title-color);
-}
-
-.bottomlinks > ul > li > a {
-  text-decoration: none;
-  color: var(--font-color);
-}
-
-footer {
-  margin-top: auto;
-  color: var(--font-color);
-}
+        column-fill: auto;
+        height: 70%;
+        /*background-color: brown;*/
+        padding-top: 10px;
+    }
+    
+    .indivMonth {
+        /*background-color: teal;*/
+        width: max-content;
+        margin: 0 auto;
+    }
+    
+    .indivMonth>h3 {
+        margin: 0;
+        text-align: left;
+    }
+    
+    #cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        background-color: var(--page-background);
+    }
+    
+    #themebutton {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 8px;
+        border-radius: 8px;
+        border: 0;
+        background-color: var(--top-bar-color);
+        color: var(--title-color);
+    }
+    
+    #themebutton:hover {
+        background-color: var(--calculated-hover);
+        color: var(--link-color);
+        cursor: pointer;
+    }
+    
+    #mainFoot {
+        margin-top: auto;
+    }
+    
+    .bottomlinks>ul>li {
+        display: inline-block;
+        text-decoration: none;
+        list-style: none;
+    }
+    
+    .bottomlinks>ul>li>a:hover {
+        color: var(--title-color);
+    }
+    
+    .bottomlinks>ul>li>a {
+        text-decoration: none;
+        color: var(--font-color);
+    }
+    
+    footer {
+        margin-top: auto;
+        color: var(--font-color);
+    }

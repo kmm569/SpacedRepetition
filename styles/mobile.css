@@ -25,7 +25,7 @@ hr {
 
 .pageTitle {
     font-size: 20px;
-    color: var(--text-color);
+    color: var(--title-color);
 }
 
 #topBar {
@@ -33,7 +33,7 @@ hr {
     margin: 0 auto 10px;
     text-align: center;
     padding: 10px 50px;
-    line-height: 40px;
+    line-height: 28px;
     width: fit-content;
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
@@ -63,12 +63,13 @@ hr {
 }
 
 .selected {
-    font-weight: bold;
+    text-decoration: underline;
 }
 
 .item:hover {
     border-radius: 5px;
     cursor: pointer;
+    background-color: var(--title-color);
     color: var(--hover-text);
 }
 
@@ -132,7 +133,7 @@ dialog::backdrop {
     border-radius: 8px;
     border: 0;
     background-color: var(--top-bar-color);
-    color: var(--text-color);
+    color: var(--title-color);
 }
 
 .topLeft {
@@ -499,7 +500,7 @@ footer {
 #feedbackButton {
     text-align: center;
     margin: 0 auto 15px auto;
-    padding: 15px 32px;
+    padding: 5px 8px;
     width: fit-content;
 }
 
