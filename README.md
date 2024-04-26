@@ -46,6 +46,9 @@ Discord: @kaitlynmm569#9959
 Email: [kmusial@gothamstudios.us](mailto:kmusial@gothamstudios.us)  
 [Feedback/Bug Report Form](https://forms.gle/MyAPgKtZB2zRC6aFA)
 # Changelog
+### 0.8.2 - 4/26/24
+- Theme changes for better accessibility
+- New default theme style
 ### 0.8.1 - 6/27/23
 - More compadable mobile interface
 - Calculation fixes
