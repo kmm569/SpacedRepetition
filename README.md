@@ -50,7 +50,7 @@ Email: [kmusial@gothamstudios.us](mailto:kmusial@gothamstudios.us)
 - Theme changes for better accessibility
 - New default theme style
 ### 0.8.1 - 6/27/23
-- More compadable mobile interface
+- More compatible mobile interface
 - Calculation fixes
 - Code optimization
 - Formatting changes
