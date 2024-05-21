@@ -42,10 +42,12 @@ At the bottom of the page, you can also export these dates to your calendar, or 
 -   Plan for multiple tests at once
 
 # Want to get in touch?
-Discord: @kaitlynmm569#9959  
+Discord: @kaitlynmm569
 Email: [kmusial@gothamstudios.us](mailto:kmusial@gothamstudios.us)  
 [Feedback/Bug Report Form](https://forms.gle/MyAPgKtZB2zRC6aFA)
 # Changelog
+### 0.8.21 - 5/21/24
+- Added math calculations for better understanding.
 ### 0.8.2 - 4/26/24
 - Theme changes for better accessibility
 - New default theme style

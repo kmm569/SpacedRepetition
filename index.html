@@ -4,6 +4,8 @@
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9QX7GQW2E"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -62,7 +64,9 @@
     <div class="main-content">
         <h2 id="what-is-spaced-repetition-">What is &quot;spaced repetition&quot;?</h2>
         <p>Spaced repetition is a powerful technique that will help you memorize information in much less time than it would take otherwise. The idea of spaced repetition is to space out your repetitions – or review sessions – so that you are not trying
-            to cram all the knowledge into your brain at once.<sup><a href="https://e-student.org/spaced-repetition/">1</a></sup> </p>
+            to cram all the knowledge into your brain at once.<sup><a href="https://e-student.org/spaced-repetition/">1</a></sup> </p><br>
+            <p>The distribution of study days will always look something like this:</p>
+        <p>|-s---s------s--------s----------------s---Test|</p>
         <h2 id="what-are-some-benefits-">What are some benefits?</h2>
         <ul>
             <li>It continually re-exposes you to information.</li>
@@ -70,6 +74,27 @@
             <li>It helps to increase active study time and learning, rather than just passively taking in information that may or may not be remembered.</li>
             <li>It helps you to relate new material with previously stored material, and make connections.</li>
         </ul>
+
+        <br>
+        <details>
+            <summary><i>See the math that makes this tool work!</i></summary>
+            <div id="spaced-math">
+                <p>Below is the raw Javascript line that calculates how much time should go between each day:</p>
+                <p><code>const mult = [2.175, 2, 1.825, 1.625, 1.45]</code></p>
+                <p><code>Math.floor( Math.pow( mult[topicDifficulty[i].value - 1], p ))</code></p>
+                <p>While this looks confusing, it can be broken down into an easier to understand math equation. Assume first level of difficulty (1), as well as calculating the first day you should study (p=1).</p>
+                <p>\(Floor( 2.175^1 )\)</p>
+                <p>This equation is telling us that if the topic is easy, we should start studying about 2 days after the first day we learn the topic.</p>
+                <p>Keep in mind that the harder a topic is, the sooner you will begin to review the topic. These values are shown above in the <code>const mult</code>, and are as follows: 2.175, 2, 1.825, 1.625, and 1.45.</p>
+                <p>When first starting to study, these values won't change too much; you will begin to review 1-2 days after you learn the topic. However, once you get closer to the test date, these days will become farther and farther apart.</p>
+                <p>Below is an example demonstrating the difference in days between the fifth study session when calculating an easy topic versus a super hard topic:</p>
+                <p>Easy Topic: \(Floor( 2.175^5 ) = 48\) Days from start date</p>
+                <p>Hard Topic: \(Floor( 1.45^5 ) = 6\) Days from start date</p>
+                <p>Keep in mind that with both of these equations, you are only studying 5 times, the only difference being the amount of time between each study session.</p>
+                <!-- <p>The distribution of study days will always look something like this:</p>
+                <p>|-o---o------o--------o----------------o---Test|</p> -->
+            </div>
+        </details>
     </div>
     <div class="tut-content">
         <h2 id="how-do-i-use-this-tool-">How do I use this tool?</h2>

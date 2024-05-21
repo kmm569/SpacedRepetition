@@ -317,8 +317,12 @@ function calcRep() {
     monYr.push(getMonthYear(dateValue + 86400000));
 
     for (let p = 1; p <= 10; p++) {
+      console.log(`P Value: ${p}`)
+      console.log(`topicDiff value:\n${topicDiff[i].value}`)
       const add = Math.floor(Math.pow(mult[topicDiff[i].value - 1], p));
+      console.log(`Add amount: ${add}`)
       const nextDate = new Date(dateValue + add * 86400000);
+      console.log(`Next Date: ${nextDate}`)
       if (nextDate < testDateValue) {
         studyDates.push([nextDate, topicNames[i].value]);
         monYr.push(getMonthYear(nextDate + 86400000));
