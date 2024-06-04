@@ -84,7 +84,8 @@
                 <p><code>Math.floor( Math.pow( mult[topicDifficulty[i].value - 1], p ))</code></p>
                 <p>While this looks confusing, it can be broken down into an easier to understand math equation. Assume first level of difficulty (1), as well as calculating the first day you should study (p=1).</p>
                 <p>\(Floor( 2.175^1 )\)</p>
-                <p>This equation is telling us that if the topic is easy, we should start studying about 2 days after the first day we learn the topic.</p>
+                <p>This equation is built off the base Ebbinghouse' "Forgetting Curve" equation: \(R=e^{-t/s}\)</p>
+                <p>It is telling us that if the topic is easy, we should start studying about 2 days after the first day we learn the topic.</p>
                 <p>Keep in mind that the harder a topic is, the sooner you will begin to review the topic. These values are shown above in the <code>const mult</code>, and are as follows: 2.175, 2, 1.825, 1.625, and 1.45.</p>
                 <p>When first starting to study, these values won't change too much; you will begin to review 1-2 days after you learn the topic. However, once you get closer to the test date, these days will become farther and farther apart.</p>
                 <p>Below is an example demonstrating the difference in days between the fifth study session when calculating an easy topic versus a super hard topic:</p>
